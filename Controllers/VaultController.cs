@@ -10,19 +10,19 @@ namespace keepr.Controllers
 {
   [Route("api/[controller]")]
   [ApiController]
-  public class KeepController : ControllerBase
+  public class VaultController : ControllerBase
   {
-    private readonly KeepRepository _kr;
-    public KeepController(KeepRepository kr)
+    private readonly VaultRepository _vr;
+    public VaultController(VaultRepository vr)
     {
-      _kr = kr;
+      _vr = vr;
     }
 
     //GETALL
     [HttpGet]
-    public ActionResult<IEnumerable<Keep>> Get()
+    public ActionResult<IEnumerable<Vault>> Get()
     {
-      IEnumerable<Keep> results = _kr.GetALL();
+      IEnumerable<Vault> results = _vr.GetALL();
       if (results == null)
       {
         return BadRequest("Unable to GETALL: Results are not there.");
@@ -32,28 +32,28 @@ namespace keepr.Controllers
 
     //GETBYID
     [HttpGet("{id}")]
-    public ActionResult<Keep> Get(int id)
+    public ActionResult<Vault> Get(int id)
     {
-      Keep found = _kr.GetById(id);
-      if (found == null) { return BadRequest("Unable to GETBYID: nothing was found."); }
+      Vault found = _vr.GetById(id);
+      if (found == null) { return BadRequest("Unable to GETBYID: Nothing was found."); }
       return Ok(found);
     }
 
     //CREATE
     [HttpPost]
-    public ActionResult<Keep> Create([FromBody] Keep keep)
+    public ActionResult<Vault> Create([FromBody] Vault vault)
     {
-      Keep newKeep = _kr.CreateKeep(keep);
-      if (newKeep == null) { return BadRequest("Unable to POST: keep doesn't exist."); }
-      return Ok(newKeep);
+      Vault newVault = _vr.CreateVault(vault);
+      if (newVault == null) { return BadRequest("Unable to POST: Vault doesn't exist."); }
+      return Ok(newVault);
     }
 
     //DELETE
     [HttpDelete("{id}")]
     public ActionResult<string> Delete(int id)
     {
-      bool successful = _kr.Delete(id);
-      if (!successful) { return BadRequest("Unable to DELETE: delete was not successful."); }
+      bool successful = _vr.Delete(id);
+      if (!successful) { return BadRequest("Unable to DELETE: Delete was not successful."); }
       return Ok();
     }
 

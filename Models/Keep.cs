@@ -13,10 +13,10 @@ namespace keepr.Models
     [Range(1, int.MaxValue)]
     public int UserId { get; set; }
     public string Img { get; set; }
+    public int IsPrivate { get; set; }
     public int Views { get; set; }
     public int Shares { get; set; }
     public int Keeps { get; set; }
-    public int IsPrivate { get; set; }
   }
 }
 

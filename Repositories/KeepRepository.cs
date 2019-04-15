@@ -21,7 +21,7 @@ namespace keepr.Repositories
 
     public Keep GetById(int Id)
     {
-      return _db.QueryFirstOrDefault<Keep>("SELECT * FROM keep WHERE id = @Id", new { Id });
+      return _db.QueryFirstOrDefault<Keep>("SELECT * FROM keeps WHERE id = @Id", new { Id });
     }
 
     public Keep CreateKeep(Keep keep)
@@ -29,7 +29,7 @@ namespace keepr.Repositories
       try
       {
         int id = _db.ExecuteScalar<int>(@"
-                INSERT INTO keep (name, description, userId, img, isPrivate)
+                INSERT INTO keeps (name, description, userId, img, isPrivate)
                     VALUES (@Name, @Description, @UserId, @Img, @IsPrivate);
                     SELECT LAST_INSERT_ID();
                 ", keep);
@@ -45,7 +45,7 @@ namespace keepr.Repositories
 
     public bool Delete(int id)
     {
-      int success = _db.Execute("DELETE FROM keep WHERE id = @id", new { id });
+      int success = _db.Execute("DELETE FROM keeps WHERE id = @id", new { id });
       return success > 0;
     }
   }
