@@ -11,12 +11,12 @@ namespace keepr.Models
     public string Description { get; set; }
     [Required]
     [Range(1, int.MaxValue)]
-    public int userId { get; set; }
-    public string img { get; set; }
-    public int views { get; set; }
-    public int shares { get; set; }
-    public int keeps { get; set; }
-
+    public int UserId { get; set; }
+    public string Img { get; set; }
+    public int Views { get; set; }
+    public int Shares { get; set; }
+    public int Keeps { get; set; }
+    public int IsPrivate { get; set; }
   }
 }
 
