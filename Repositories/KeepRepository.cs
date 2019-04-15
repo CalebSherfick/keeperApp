@@ -6,10 +6,10 @@ using Dapper;
 
 namespace keepr.Repositories
 {
-  public class KeepRepository
+  public class KeepsRepository
   {
     private readonly IDbConnection _db;
-    public KeepRepository(IDbConnection db)
+    public KeepsRepository(IDbConnection db)
     {
       _db = db;
     }

@@ -6,10 +6,10 @@ using Dapper;
 
 namespace keepr.Repositories
 {
-  public class VaultRepository
+  public class VaultsRepository
   {
     private readonly IDbConnection _db;
-    public VaultRepository(IDbConnection db)
+    public VaultsRepository(IDbConnection db)
     {
       _db = db;
     }
@@ -29,8 +29,8 @@ namespace keepr.Repositories
       try
       {
         int id = _db.ExecuteScalar<int>(@"
-                INSERT INTO vaults (name, description, userId, img, isPrivate)
-                    VALUES (@Name, @Description, @UserId, @Img, @IsPrivate);
+                INSERT INTO vaults (name, description, userId)
+                    VALUES (@Name, @Description, @UserId);
                     SELECT LAST_INSERT_ID();
                 ", vault);
         vault.Id = id;
