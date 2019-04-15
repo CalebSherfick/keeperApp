@@ -21,11 +21,15 @@ let api = Axios.create({
 
 export default new Vuex.Store({
   state: {
-    user: {}
+    user: {},
+    myVaults: []
   },
   mutations: {
     setUser(state, user) {
       state.user = user
+    },
+    setMyVaults(state, vaults) {
+      state.myVaults = vaults
     }
   },
   actions: {
@@ -58,6 +62,39 @@ export default new Vuex.Store({
         .catch(e => {
           console.log('Login Failed')
         })
+    },
+
+    //#region  --VAULTS--
+
+    //CREATE VAULTS
+    createVault({ commit, dispatch }, payload) {
+      debugger
+      api.post('vaults', payload)
+        .then(res => {
+          commit('setMyVaults', res.data)
+          console.log(res.data)
+        })
+    },
+
+    //GET VAULTS
+    getVaults({ commit, dispatch }) {
+      debugger
+      api.get('vaults')
+        .then(res => {
+          commit('setMyVaults', res.data)
+        })
     }
+
+    //#endregion
+
+
+
+
+
+
+
+
+
+
   }
 })

@@ -19,7 +19,7 @@ namespace keepr.Controllers
       _vr = vr;
     }
 
-    //GETALL BY USERID
+    //GETALL
     [HttpGet]
     public ActionResult<IEnumerable<Vault>> Get()
     {
@@ -31,9 +31,16 @@ namespace keepr.Controllers
       return Ok(results);
     }
 
+    //GetKeepsByVaultId
+    [HttpGet("{id}/keeps")]
+    public ActionResult<IEnumerable<Keep>> GetKeeps(int id)
+    {
+      return Ok(_vr.GetKeeps(id));
+    }
+
+
     //CREATE
     [HttpPost]
-    [Authorize]
     public ActionResult<Vault> Create([FromBody] Vault vault)
     {
       vault.UserId = HttpContext.User.Identity.Name;
@@ -47,6 +54,8 @@ namespace keepr.Controllers
     [Authorize]
     public ActionResult<string> Delete(int id)
     {
+      // var UserId = HttpContext.User.Identity.Name;
+      // if (UserId == Vault.UserId)
       bool successful = _vr.Delete(id);
       if (!successful) { return BadRequest("Unable to DELETE: Delete was not successful."); }
       return Ok();
