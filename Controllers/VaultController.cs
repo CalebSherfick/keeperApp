@@ -41,6 +41,7 @@ namespace keepr.Controllers
 
     //CREATE
     [HttpPost]
+    [Authorize]
     public ActionResult<Vault> Create([FromBody] Vault vault)
     {
       vault.UserId = HttpContext.User.Identity.Name;
@@ -51,7 +52,6 @@ namespace keepr.Controllers
 
     //DELETE
     [HttpDelete("{id}")]
-    [Authorize]
     public ActionResult<string> Delete(int id)
     {
       // var UserId = HttpContext.User.Identity.Name;

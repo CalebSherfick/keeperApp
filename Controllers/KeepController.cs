@@ -40,11 +40,8 @@ namespace keepr.Controllers
       return Ok(found);
     }
 
-    //GET KEEP BY USER ID api/
-
     //CREATE
     [HttpPost]
-    [Authorize]
     public ActionResult<Keep> Create([FromBody] Keep keep)
     {
       keep.UserId = HttpContext.User.Identity.Name;
@@ -55,7 +52,6 @@ namespace keepr.Controllers
 
     //DELETE
     [HttpDelete("{id}")]
-    [Authorize]
     public ActionResult<string> Delete(int id)
     {
       bool successful = _kr.Delete(id);

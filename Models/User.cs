@@ -29,7 +29,6 @@ namespace keepr.Models
     [MinLength(6)]
     public string Password { get; set; }
   }
-  [Authorize]
   public class User
   {
     public string Id { get; set; }

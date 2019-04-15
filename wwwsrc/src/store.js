@@ -5,7 +5,7 @@ import router from './router'
 
 Vue.use(Vuex)
 
-let baseUrl = location.host.includes('localhost') ? '//localhost:5000/' : '/'
+let baseUrl = location.host.includes('localhost') ? 'https://localhost:5001/' : '/'
 
 let auth = Axios.create({
   baseURL: baseUrl + "account/",
