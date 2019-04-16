@@ -1,7 +1,8 @@
 <template>
-  <div class="col">
+  <div :class="$mq | mq({xs: 'col-12', sm: 'col-12', md: 'col-3', lg: 'col-3'})">
     <p>{{vault.name}}</p>
-    <button class="btn btn-outline-primary px-4 mb-2" @click="deleteVault(vault.id)">Delete</button>
+    <p>{{vault.description}}</p>
+    <button class="btn btn-danger px-4 mb-2" @click="deleteVault(vault.id)">Delete</button>
   </div>
 </template>
 

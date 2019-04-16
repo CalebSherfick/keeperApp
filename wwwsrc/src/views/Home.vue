@@ -16,6 +16,11 @@
     </section>
 
   </div>
+
+
+  <!-- :class="$mq | mq({xs: '', sm: '', md: '', lg: ''})" -->
+
+
 </template>
 
 <script>
