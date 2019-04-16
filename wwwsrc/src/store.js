@@ -50,7 +50,17 @@ export default new Vuex.Store({
     },
     addKeeps(state, newKeep) {
       state.keeps.push(newKeep)
-    }
+    },
+    removeKeep(state, keepId) {
+      let arr = state.keeps
+      for (let i = 0; i < arr.length; i++) {
+        let keep = arr[i];
+        if (keep.id == keepId) {
+          arr.splice(i, 1);
+          return
+        }
+      }
+    },
   },
   actions: {
     register({ commit, dispatch }, newUser) {
