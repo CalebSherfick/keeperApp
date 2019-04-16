@@ -19,11 +19,6 @@ namespace keepr.Repositories
       return _db.Query<Vault>("SELECT * FROM vaults");
     }
 
-    public Vault GetById(int Id)
-    {
-      return _db.QueryFirstOrDefault<Vault>("SELECT * FROM vaults WHERE id = @Id", new { Id });
-    }
-
     public Vault CreateVault(Vault vault)
     {
       try
@@ -41,12 +36,6 @@ namespace keepr.Repositories
         Console.WriteLine(e);
         return null;
       }
-    }
-
-    //GETALL KEEPS BY VAULT
-    public IEnumerable<Keep> GetKeeps(int id)
-    {
-      return _db.Query<Keep>("SELECT * FROM keeps WHERE vaultId = @id", new { id });
     }
 
     public bool Delete(int id)

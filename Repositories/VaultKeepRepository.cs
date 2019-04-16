@@ -6,25 +6,25 @@ using Dapper;
 
 namespace keepr.Repositories
 {
-  public class KeepsRepository
+  public class VaultKeepsRepository
   {
     private readonly IDbConnection _db;
-    public KeepsRepository(IDbConnection db)
+    public VaultKeepsRepository(IDbConnection db)
     {
       _db = db;
     }
 
-    public IEnumerable<Keep> GetALL()
+    public IEnumerable<VaultKeep> GetALL()
     {
-      return _db.Query<Keep>("SELECT * FROM keeps");
+      return _db.Query<VaultKeep>("SELECT * FROM vaultkeeps");
     }
 
-    // public Keep GetById(int Id)
+    // public VaultKeep GetById(int Id)
     // {
-    //   return _db.QueryFirstOrDefault<Keep>("SELECT * FROM keeps WHERE id = @Id", new { Id });
+    //   return _db.QueryFirstOrDefault<VaultKeep>("SELECT * FROM keeps WHERE id = @Id", new { Id });
     // }
 
-    public Keep CreateKeep(Keep keep)
+    public VaultKeep CreateKeep(VaultKeep vaultKeep)
     {
       try
       {
@@ -32,9 +32,9 @@ namespace keepr.Repositories
                 INSERT INTO keeps (name, description, userId, img)
                     VALUES (@Name, @Description, @UserId, @Img);
                     SELECT LAST_INSERT_ID();
-                ", keep);
-        keep.Id = id;
-        return keep;
+                ", vaultKeep);
+        vaultKeep.Id = id;
+        return vaultKeep;
       }
       catch (Exception e)
       {
@@ -45,7 +45,7 @@ namespace keepr.Repositories
 
     public bool Delete(int id)
     {
-      int success = _db.Execute("DELETE FROM keeps WHERE id = @id", new { id });
+      int success = _db.Execute("DELETE FROM vaultkeeps WHERE id = @id", new { id });
       return success > 0;
     }
   }

@@ -31,14 +31,6 @@ namespace keepr.Controllers
       return Ok(results);
     }
 
-    //GetKeepsByVaultId
-    [HttpGet("{id}/keeps")]
-    public ActionResult<IEnumerable<Keep>> GetKeeps(int id)
-    {
-      return Ok(_vr.GetKeeps(id));
-    }
-
-
     //CREATE
     [HttpPost]
     [Authorize]
