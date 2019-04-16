@@ -22,7 +22,8 @@ let api = Axios.create({
 export default new Vuex.Store({
   state: {
     user: {},
-    myVaults: []
+    myVaults: [],
+    keeps: []
   },
   mutations: {
     setUser(state, user) {
@@ -43,6 +44,12 @@ export default new Vuex.Store({
           return
         }
       }
+    },
+    setKeeps(state, keeps) {
+      state.keeps = keeps
+    },
+    addKeeps(state, newKeep) {
+      state.keeps.push(newKeep)
     }
   },
   actions: {
@@ -79,7 +86,7 @@ export default new Vuex.Store({
 
     //#region  --VAULTS--
 
-    //CREATE VAULTS
+    //CREATE VAULT
     createVault({ commit, dispatch }, payload) {
       api.post('vaults', payload)
         .then(res => {
@@ -101,10 +108,37 @@ export default new Vuex.Store({
         .then(res => {
           commit('removeVault', vaultId)
         })
-    }
+    },
 
     //#endregion
 
+    //#region  --KEEPS--
+
+    //CREATE KEEP
+    createKeep({ commit, dispatch }, payload) {
+      api.post('keeps', payload)
+        .then(res => {
+          commit('addKeeps', res.data)
+        })
+    },
+
+    //GET KEEPS
+    getKeeps({ commit, dispatch }) {
+      api.get('keeps')
+        .then(res => {
+          commit('setKeeps', res.data)
+        })
+    },
+
+    //DELETE KEEP
+    deleteKeep({ commit, dispatch }, keepId) {
+      api.delete('keeps/' + keepId)
+        .then(res => {
+          commit('removeKeep', keepId)
+        })
+    }
+
+    //#endregion
 
 
 
