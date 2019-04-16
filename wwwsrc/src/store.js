@@ -30,6 +30,19 @@ export default new Vuex.Store({
     },
     setMyVaults(state, vaults) {
       state.myVaults = vaults
+    },
+    addMyVaults(state, newVault) {
+      state.myVaults.push(newVault)
+    },
+    removeVault(state, vaultId) {
+      let arr = state.myVaults
+      for (let i = 0; i < arr.length; i++) {
+        let vault = arr[i];
+        if (vault.id == vaultId) {
+          arr.splice(i, 1);
+          return
+        }
+      }
     }
   },
   actions: {
@@ -70,18 +83,23 @@ export default new Vuex.Store({
     createVault({ commit, dispatch }, payload) {
       api.post('vaults', payload)
         .then(res => {
-          // commit('setMyVaults', res.data)
-          dispatch('getVaults')
-          console.log(res.data)
+          commit('addMyVaults', res.data)
         })
     },
 
     //GET VAULTS
     getVaults({ commit, dispatch }) {
-      debugger
       api.get('vaults')
         .then(res => {
           commit('setMyVaults', res.data)
+        })
+    },
+
+    //DELETE VAULT
+    deleteVault({ commit, dispatch }, vaultId) {
+      api.delete('vaults/' + vaultId)
+        .then(res => {
+          commit('removeVault', vaultId)
         })
     }
 
