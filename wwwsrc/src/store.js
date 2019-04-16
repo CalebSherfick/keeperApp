@@ -68,10 +68,10 @@ export default new Vuex.Store({
 
     //CREATE VAULTS
     createVault({ commit, dispatch }, payload) {
-      debugger
       api.post('vaults', payload)
         .then(res => {
-          commit('setMyVaults', res.data)
+          // commit('setMyVaults', res.data)
+          dispatch('getVaults')
           console.log(res.data)
         })
     },

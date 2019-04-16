@@ -18,6 +18,7 @@
       if (!this.$store.state.user.id) {
         this.$router.push({ name: "login" });
       }
+      dispatch('getVaults')
     },
     data() {
       return {
