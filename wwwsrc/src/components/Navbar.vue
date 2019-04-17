@@ -1,64 +1,60 @@
 <template>
   <div class="navComponent">
-    <div class="navComponent">
-      <nav
-        :class="$mq | mq({xs: 'navbar fixed-top poplarBG', sm: 'navbar fixed-top poplarBG', md: 'navbar fixed-top navbar-expand-lg poplarBG', lg: 'navbar fixed-top navbar-expand-lg poplarBG'})">
+    <nav
+      :class="$mq | mq({xs: 'navbar sticky-top keeprBG row', sm: 'navbar sticky-top keeprBG row', md: 'navbar sticky-top navbar-expand-lg keeprBG row', lg: 'navbar sticky-top navbar-expand-lg keeprBG row'})">
 
-        <mq-layout mq="xs">
-          <i class="far fa-plus-square fa-2x" @click="makePost()"></i>
-        </mq-layout>
-        <mq-layout mq="sm">
-          <i class="far fa-plus-square fa-2x" @click="makePost()"></i>
-        </mq-layout>
-        <mq-layout mq="md">
-          <p>Keepr</p>
-        </mq-layout>
-        <mq-layout mq="lg">
-          <p>Keepr</p>
-        </mq-layout>
+      <a class="nav-text" @click="" :class="$mq | mq({xs: '', sm: '', md: 'col-1', lg: 'col-1'})">Keepr</a>
+      <a class="nav-text" @click=""
+        :class="$mq | mq({xs: '', sm: '', md: 'col-1 offset-5', lg: 'col-1 offset-5'})">Dashboard</a>
+      <a class="nav-text" @click="" :class="$mq | mq({xs: '', sm: '', md: 'col-1', lg: 'col-1'})">My Vaults</a>
+      <a class="nav-text" @click="" :class="$mq | mq({xs: '', sm: '', md: 'col-1', lg: 'col-1'})">My Keeps</a>
+      <a class="nav-text" @click="logout" :class="$mq | mq({xs: '', sm: '', md: 'col-1', lg: 'col-1'})">Logout</a>
 
 
-        <mq-layout mq="xs">
-          <i class="fas fa-sign-out-alt fa-2x" @click="logout()"></i>
-        </mq-layout>
-        <mq-layout mq="sm">
-          <i class="fas fa-sign-out-alt fa-2x" @click="logout()"></i>
-        </mq-layout>
-        <mq-layout mq="md">
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
-            aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-        </mq-layout>
-        <mq-layout mq="lg">
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
-            aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-        </mq-layout>
 
-        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-          <ul class="navbar-nav mr-auto mt-2 mt-lg-0 ml-4">
-            <a class="nav-item nav-link curs" :class="{active : activeClass == 2}"
-              @click="activeClass = 2; allPosts();">
-              All
-              Posts
-            </a>
-            <a class="nav-item nav-link curs" :class="{active : activeClass == 1}" @click="activeClass = 1; goPosts();">
-              Friends
-              Posts
-            </a>
-            <a class="nav-item nav-link curs" :class="{active : activeClass == 3}"
-              @click="activeClass = 3; myProfile();">Profile</a>
-            <a class="nav-item nav-link curs" :class="{active : activeClass == 5}"
-              @click="activeClass = 5; makePost();">Make
-              Post</a>
-            <a class="nav-item nav-link curs" :class="{active : activeClass == 4}"
-              @click="logout(); activeClass = null">Logout</a>
-          </ul>
-        </div>
-      </nav>
-    </div>
+
+
+
+
+
+
+
+
+      <!-- <mq-layout mq="xs">
+        <i class="far fa-plus-square fa-2x" @click="makePost()"></i>
+      </mq-layout>
+      <mq-layout mq="sm">
+        <i class="far fa-plus-square fa-2x" @click="makePost()"></i>
+      </mq-layout>
+      <mq-layout mq="md">
+        <p>Keepr</p>
+      </mq-layout>
+      <mq-layout mq="lg">
+        <p>Keepr</p>
+      </mq-layout>
+
+
+      <mq-layout mq="xs">
+        <i class="fas fa-sign-out-alt fa-2x" @click="logout()"></i>
+      </mq-layout>
+      <mq-layout mq="sm">
+        <i class="fas fa-sign-out-alt fa-2x" @click="logout()"></i>
+      </mq-layout>
+
+      <div class="collapse navbar-collapse">
+        <a class="nav-item nav-link curs" @click="allPosts();">
+          Dashboard
+        </a>
+        <a class="nav-item nav-link curs" @click="goPosts();">
+          My Vaults
+        </a>
+        <a class="nav-item nav-link curs" @click="myProfile();">My Keeps</a>
+        <a class="nav-item nav-link curs" @click="makePost();">Make
+          Post</a>
+        <a class="nav-item nav-link curs" @click="logout(); activeClass = null">Logout</a>
+      </div> -->
+
+    </nav>
   </div>
 </template>
 
@@ -70,7 +66,11 @@
       return {};
     },
     computed: {},
-    methods: {},
+    methods: {
+      logout() {
+        this.$store.dispatch("logout");
+      }
+    },
     components: {}
   };
 </script>
@@ -80,28 +80,19 @@
     cursor: pointer;
   }
 
-  .poplarBG {
-    background-color: #6496c7;
+  .keeprBG {
+    background-color: #687c68;
   }
 
-  .poplarIMG {
-    max-height: 5vh;
-  }
-
-  .poplarIMG:hover {
+  a:hover {
     cursor: pointer;
   }
 
-  .fas:hover {
-    cursor: pointer;
+  nav {
+    max-width: 100%;
   }
 
-  .active {
-    color: rgb(1, 1, 157);
-    border-bottom: 3px solid rgb(51, 51, 211);
-  }
-
-  a {
+  .nav-text {
     color: white !important;
   }
 

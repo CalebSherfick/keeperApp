@@ -67,7 +67,7 @@ export default new Vuex.Store({
       auth.post('register', newUser)
         .then(res => {
           commit('setUser', res.data)
-          router.push({ name: 'home' })
+          router.push({ name: 'dashboard' })
         })
         .catch(e => {
           console.log('[registration failed] :', e)
@@ -77,7 +77,7 @@ export default new Vuex.Store({
       auth.get('authenticate')
         .then(res => {
           commit('setUser', res.data)
-          router.push({ name: 'home' })
+          router.push({ name: 'dashboard' })
         })
         .catch(e => {
           console.log('not authenticated')
@@ -87,10 +87,17 @@ export default new Vuex.Store({
       auth.post('login', creds)
         .then(res => {
           commit('setUser', res.data)
-          router.push({ name: 'home' })
+          router.push({ name: 'dashboard' })
         })
         .catch(e => {
           console.log('Login Failed')
+        })
+    },
+    logout({ commit, dispatch }) {
+      auth.delete('logout')
+        .then(res => {
+          commit('setUser', res.data)
+          router.push({ name: 'login' })
         })
     },
 
