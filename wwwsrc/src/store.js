@@ -155,7 +155,6 @@ export default new Vuex.Store({
 
     //CREATE KEEP
     createVaultKeep({ commit, dispatch }, payload) {
-      debugger
       api.post('vaultkeeps', payload)
         .then(res => {
           commit('addKeeps', res.data)
