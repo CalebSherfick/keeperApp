@@ -146,12 +146,39 @@ export default new Vuex.Store({
         .then(res => {
           commit('removeKeep', keepId)
         })
-    }
+    },
 
     //#endregion
 
 
+    //#region  --VAULTKEEPS--
 
+    //CREATE KEEP
+    createVaultKeep({ commit, dispatch }, payload) {
+      debugger
+      api.post('vaultkeeps', payload)
+        .then(res => {
+          commit('addKeeps', res.data)
+        })
+    },
+
+    //GET KEEPS
+    getVaultKeeps({ commit, dispatch }) {
+      api.get('keeps')
+        .then(res => {
+          commit('setKeeps', res.data)
+        })
+    },
+
+    //DELETE KEEP
+    deleteVaultKeep({ commit, dispatch }, keepId) {
+      api.delete('keeps/' + keepId)
+        .then(res => {
+          commit('removeKeep', keepId)
+        })
+    }
+
+    //#endregion
 
 
 

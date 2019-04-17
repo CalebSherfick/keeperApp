@@ -31,14 +31,14 @@ namespace keepr.Controllers
       return Ok(results);
     }
 
-    //GET BY ID api/keep/id
-    [HttpGet("{id}")]
-    public ActionResult<Keep> Get(int id)
-    {
-      Keep found = _kr.GetById(id);
-      if (found == null) { return BadRequest("Unable to GETBYID: Nothing was found."); }
-      return Ok(found);
-    }
+    // //GET BY ID api/keep/id
+    // [HttpGet("{id}")]
+    // public ActionResult<Keep> Get(int id)
+    // {
+    //   Keep found = _kr.GetById(id);
+    //   if (found == null) { return BadRequest("Unable to GETBYID: Nothing was found."); }
+    //   return Ok(found);
+    // }
 
     //CREATE
     [HttpPost]

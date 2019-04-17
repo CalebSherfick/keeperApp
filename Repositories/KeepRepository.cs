@@ -19,10 +19,7 @@ namespace keepr.Repositories
       return _db.Query<Keep>("SELECT * FROM keeps");
     }
 
-    // public Keep GetById(int Id)
-    // {
-    //   return _db.QueryFirstOrDefault<Keep>("SELECT * FROM keeps WHERE id = @Id", new { Id });
-    // }
+
 
     public Keep CreateKeep(Keep keep)
     {
