@@ -19,14 +19,15 @@ namespace keepr.Controllers
       _vkr = vkr;
     }
 
-    //GETALL keeps by vault   api/vaultkeeps
-    [HttpGet]
-    public ActionResult<IEnumerable<VaultKeep>> Get()
+    //GETALL keeps by vaultId   api/vaultkeeps/{{vaultId}}/keeps
+    [HttpGet("{id}/keeps")]
+    public ActionResult<IEnumerable<Keep>> Get(int vaultId)
     {
-      IEnumerable<VaultKeep> results = _vkr.GetALL();
+      string userId = HttpContext.User.Identity.Name;
+      IEnumerable<Keep> results = _vkr.GetAllVaultKeeps(vaultId, userId);
       if (results == null)
       {
-        return BadRequest("Unable to GETALL: Results are not there.");
+        return BadRequest("Unable to GETALLVAULTKEEPS: Results are not there.");
       }
       return Ok(results);
     }
@@ -40,17 +41,17 @@ namespace keepr.Controllers
     //   return Ok(found);
     // }
 
-    //CREATE
+    //CREATE VAULTKEEP (ADD KEEP TO VAULT) api/vaultkeeps
     [HttpPost]
-    public ActionResult<VaultKeep> Create([FromBody] VaultKeep vaultkeep)
+    public ActionResult<Vault> AddKeep([FromBody] VaultKeep payloadVK)
     {
-      vaultkeep.UserId = HttpContext.User.Identity.Name;
-      VaultKeep newVaultKeep = _vkr.CreateKeep(vaultkeep);
+      payloadVK.UserId = HttpContext.User.Identity.Name;
+      VaultKeep newVaultKeep = _vkr.CreateVaultKeep(payloadVK);
       if (newVaultKeep == null) { return BadRequest("Unable to POST: VaultKeep doesn't exist."); }
       return Ok(newVaultKeep);
     }
 
-    //DELETE
+    //DELETE VAULTKEEP
     [HttpDelete("{id}")]
     public ActionResult<string> Delete(int id)
     {

@@ -14,9 +14,11 @@ namespace keepr.Repositories
       _db = db;
     }
 
-    public IEnumerable<VaultKeep> GetALL()
+    public IEnumerable<Keep> GetAllVaultKeeps(int vaultId, string userId)
     {
-      return _db.Query<VaultKeep>("SELECT * FROM vaultkeeps");
+      return _db.Query<Keep>(@"SELECT * FROM vaultkeeps vk
+INNER JOIN keeps k ON k.id = vk.keepId
+WHERE(vaultId = @vaultId AND vk.userId = @userId)", new { vaultId, userId });
     }
 
     // public VaultKeep GetById(int Id)
@@ -24,17 +26,17 @@ namespace keepr.Repositories
     //   return _db.QueryFirstOrDefault<VaultKeep>("SELECT * FROM keeps WHERE id = @Id", new { Id });
     // }
 
-    public VaultKeep CreateKeep(VaultKeep vaultKeep)
+    public VaultKeep CreateVaultKeep(VaultKeep payloadVK)
     {
       try
       {
         int id = _db.ExecuteScalar<int>(@"
-                INSERT INTO keeps (name, description, userId, img)
-                    VALUES (@Name, @Description, @UserId, @Img);
+                INSERT INTO vaultkeeps (vaultId, keepId, userId)
+                    VALUES (@VaultId, @KeepId, @UserId);
                     SELECT LAST_INSERT_ID();
-                ", vaultKeep);
-        vaultKeep.Id = id;
-        return vaultKeep;
+                ", payloadVK);
+        payloadVK.Id = id;
+        return payloadVK;
       }
       catch (Exception e)
       {
