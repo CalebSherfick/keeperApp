@@ -43,6 +43,7 @@ namespace keepr.Controllers
 
     //CREATE VAULTKEEP (ADD KEEP TO VAULT) api/vaultkeeps
     [HttpPost]
+    [Authorize]
     public ActionResult<Vault> AddKeep([FromBody] VaultKeep payloadVK)
     {
       payloadVK.UserId = HttpContext.User.Identity.Name;
@@ -53,6 +54,7 @@ namespace keepr.Controllers
 
     //DELETE VAULTKEEP
     [HttpDelete("{id}")]
+    [Authorize]
     public ActionResult<string> Delete(int id)
     {
       bool successful = _vkr.Delete(id);

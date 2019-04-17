@@ -11,7 +11,6 @@
       Create Keep
     </button>
 
-
     <!-- Create VAULT Modal -->
     <div class="modal" id="createVaultMod" tabindex="-1" role="dialog" aria-labelledby="createVaultModalLabel"
       aria-hidden="true">
@@ -35,7 +34,6 @@
         </div>
       </div>
     </div>
-
 
     <!-- Create KEEP Modal -->
     <div class="modal" id="createKeepMod" tabindex="-1" role="dialog" aria-labelledby="createKeepModalLabel"
@@ -61,14 +59,6 @@
         </div>
       </div>
     </div>
-
-
-
-
-
-
-
-
 
     <section class="row vaults">
       <div class="col-12">
