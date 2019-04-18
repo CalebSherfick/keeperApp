@@ -29,8 +29,9 @@ export default new Router({
       component: Vaults
     },
     {
-      path: '/vaults/:vaultId/keeps',
+      path: '/vaults/:VaultId/keeps',
       name: 'vaultKeeps',
+      props: true,
       component: VaultKeeps
     },
     {

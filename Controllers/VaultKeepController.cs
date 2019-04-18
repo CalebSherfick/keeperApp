@@ -20,7 +20,7 @@ namespace keepr.Controllers
     }
 
     //GETALL keeps by vaultId   api/vaultkeeps/{{vaultId}}/keeps
-    [HttpGet("{id}/keeps")]
+    [HttpGet("{vaultId}/keeps")]
     public ActionResult<IEnumerable<Keep>> Get(int vaultId)
     {
       string userId = HttpContext.User.Identity.Name;

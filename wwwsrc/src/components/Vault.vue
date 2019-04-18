@@ -1,6 +1,6 @@
 <template>
 
-  <div @click="vaultKeeps"
+  <div @click="vaultKeeps(vault.id)"
     :class="$mq | mq({xs: 'col-12 mb-3 clickable', sm: 'col-12 mb-3 clickable', md: 'col-4 mb-3 clickable', lg: 'col-3 mb-3 clickable'})">
     <div class="card">
       <div class="card-header">
@@ -27,13 +27,10 @@
       deleteVault(vaultId) {
         this.$store.dispatch("deleteVault", vaultId);
       },
-      vaultKeeps() {
+      vaultKeeps(id) {
+        debugger
         this.$router.push({
-          path: "/vaults/" + this.vault.id + "keeps",
-          name: "vaultKeeps",
-          params: {
-            vaultId: this.vault.id
-          }
+          path: "/vaults/" + id + "/keeps"
         })
       }
 

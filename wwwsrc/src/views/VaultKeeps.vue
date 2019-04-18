@@ -2,6 +2,14 @@
   <div class="dashboard container-fluid">
     <h1>Vault Keeps</h1>
 
+    <section class="row vaults">
+      <div class="col-12">
+        <div class="row">
+          <keep v-for="keep in keeps" :keep="keep"></keep>
+        </div>
+      </div>
+    </section>
+
   </div>
 
 
@@ -21,14 +29,13 @@
       if (!this.$store.state.user.id) {
         this.$router.push({ name: "login" });
       }
+      //Get vault where vaultid= params & userid=logged in
+
+      //Get vaultkeeps
+      this.$store.dispatch('getVaultKeeps', parseInt(this.$route.params.VaultId));
     },
     data() {
       return {
-        newVault: {
-        },
-        newKeep: {
-
-        }
       }
     },
     computed: {
