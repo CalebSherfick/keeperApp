@@ -77,7 +77,8 @@ export default new Vuex.Store({
       auth.get('authenticate')
         .then(res => {
           commit('setUser', res.data)
-          router.push({ name: 'dashboard' })
+          // dispatch('getUserVaults')
+          // router.push({ name: 'dashboard' })
         })
         .catch(e => {
           console.log('not authenticated')
