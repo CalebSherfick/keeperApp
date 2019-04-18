@@ -1,41 +1,51 @@
 <template>
-  <div class="vaultsView container-fluid">
-    <h1>My Vaults</h1>
+  <div class="myKeeps container-fluid">
+    <h1>My Keeps</h1>
+
     <section class="row vaults">
       <div class="col-12">
         <div class="row">
-          <vault v-for="vault in vaults" :vault="vault"></vault>
+          <my-keep v-for="keep in keeps" :keep="keep"></my-keep>
         </div>
       </div>
     </section>
+
   </div>
 
+
   <!-- :class="$mq | mq({xs: '', sm: '', md: '', lg: ''})" -->
+
+
 </template>
 
 <script>
-  import Vault from "@/components/Vault.vue";
+  import MyKeep from "@/components/MyKeep.vue"
 
   export default {
-    name: "vaultsView",
-    props: [],
+    name: "myKeeps",
     mounted() {
       //blocks users not logged in
       if (!this.$store.state.user.id) {
         this.$router.push({ name: "login" });
       }
+      //Get vaultkeeps
+      this.$store.dispatch('getMyKeeps');
     },
     data() {
-      return {};
-    },
-    computed: {
-      vaults() {
-        return this.$store.state.myVaults;
+      return {
       }
     },
-    methods: {},
+    computed: {
+      keeps() {
+        return this.$store.state.keeps
+      }
+    },
+    methods: {
+
+    },
     components: {
-      Vault
+      MyKeep
     }
+
   };
 </script>

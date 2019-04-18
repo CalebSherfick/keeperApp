@@ -19,11 +19,24 @@ namespace keepr.Controllers
       _kr = kr;
     }
 
-    //GETALL api/keep
+    //GETALL api/keeps
     [HttpGet]
     public ActionResult<IEnumerable<Keep>> Get()
     {
       IEnumerable<Keep> results = _kr.GetALL();
+      if (results == null)
+      {
+        return BadRequest("Unable to GETALL: Results are not there.");
+      }
+      return Ok(results);
+    }
+
+    //GET MY api/keeps/mykeeps
+    [HttpGet("mykeeps")]
+    public ActionResult<IEnumerable<Keep>> GetMyKeeps()
+    {
+      string UserId = HttpContext.User.Identity.Name;
+      IEnumerable<Keep> results = _kr.GetAllMyKeeps(UserId);
       if (results == null)
       {
         return BadRequest("Unable to GETALL: Results are not there.");
@@ -49,6 +62,13 @@ namespace keepr.Controllers
       if (newKeep == null) { return BadRequest("Unable to POST: Keep doesn't exist."); }
       return Ok(newKeep);
     }
+
+    //EDIT
+    //     [HttpPut("{id}")]
+    //     public ActionResult<Keep> AddView(int id)
+    //     {
+    // Keep newKeep = _kr.AddView(id)
+    //     }
 
     //DELETE
     [HttpDelete("{id}")]

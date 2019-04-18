@@ -1,12 +1,13 @@
 <template>
   <div :class="$mq | mq({xs: 'col-12', sm: 'col-12', md: '', lg: 'col-3'})">
+
     <img :src="keep.img" :class="$mq | mq({xs: 'w-100', sm: 'w-100', md: 'w-100', lg: 'w-100'})">
     <p>{{keep.name}}</p>
     <p>{{keep.description}}</p>
-    <button class="btn btn-danger px-4 mb-2" @click="deleteKeep(keep.id)">Delete</button>
 
     <!-- Button trigger modal -->
-    <button type="button" class="btn btn-success" data-toggle="modal" :data-target="'#keepModal' + keep.id">
+    <button @click="increaseViewCount(keep.id)" type="button" class="btn btn-success" data-toggle="modal"
+      :data-target="'#keepModal' + keep.id">
       View Keep
     </button>
 
@@ -43,7 +44,7 @@
       </div>
     </div>
 
-
+    <!-- <button class="btn btn-danger px-4 mb-2" @click="deleteKeep(keep.id)">Delete</button> -->
 
   </div>
 </template>
@@ -69,6 +70,9 @@
           VaultId: vaultId,
           KeepId: keepId
         })
+      },
+      increaseViewCount(keepId) {
+        this.$store.dispatch("increaseViewCount", keepId)
       }
     },
     components: {

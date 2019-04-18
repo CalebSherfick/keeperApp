@@ -26,7 +26,8 @@
             <form @submit.prevent="createVault">
               <input type="text" placeholder=" Name" v-model="newVault.name" required>
               <input type="text" placeholder=" Description" v-model="newVault.description" class="ml-2" id="desc">
-              <button type="submit" class="btn btn-sm btn-outline-dark shadow ml-2">Create Vault</button>
+              <button type="submit" class="btn btn-sm btn-outline-dark shadow ml-2">Create
+                Vault</button>
             </form>
           </div>
           <div class="modal-footer">
@@ -51,7 +52,8 @@
               <input type="text" placeholder=" Name" v-model="newKeep.name" required>
               <input type="text" placeholder=" Description" v-model="newKeep.description" class="ml-2" id="desc">
               <input type="text" placeholder=" Image Url" v-model="newKeep.img" class="ml-2" id="desc">
-              <button type="submit" class="btn btn-sm btn-outline-dark shadow ml-2">Create Keep</button>
+              <button type="submit" class="btn btn-sm btn-outline-dark shadow ml-2">Create
+                Keep</button>
             </form>
           </div>
           <div class="modal-footer">

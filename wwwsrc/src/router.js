@@ -8,6 +8,8 @@ import Login from './views/Login.vue'
 import Vaults from './views/Vaults.vue'
 // @ts-ignore
 import VaultKeeps from './views/VaultKeeps.vue'
+// @ts-ignore
+import MyKeeps from './views/MyKeeps.vue'
 
 Vue.use(Router)
 
@@ -33,6 +35,11 @@ export default new Router({
       name: 'vaultKeeps',
       props: true,
       component: VaultKeeps
+    },
+    {
+      path: '/mykeeps',
+      name: 'myKeeps',
+      component: MyKeeps
     },
     {
       path: '/login',

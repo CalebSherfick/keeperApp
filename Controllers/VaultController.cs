@@ -23,7 +23,8 @@ namespace keepr.Controllers
     [HttpGet]
     public ActionResult<IEnumerable<Vault>> Get()
     {
-      IEnumerable<Vault> results = _vr.GetALL();
+      string UserId = HttpContext.User.Identity.Name;
+      IEnumerable<Vault> results = _vr.GetALL(UserId);
       if (results == null)
       {
         return BadRequest("Unable to GETALL: Results are not there.");

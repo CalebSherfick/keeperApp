@@ -7,7 +7,7 @@
       <a class="nav-text" @click="goDashboard"
         :class="$mq | mq({xs: '', sm: '', md: 'col-1 offset-5', lg: 'col-1 offset-5'})">Dashboard</a>
       <a class="nav-text" @click="goVaults" :class="$mq | mq({xs: '', sm: '', md: 'col-1', lg: 'col-1'})">My Vaults</a>
-      <a class="nav-text" @click="" :class="$mq | mq({xs: '', sm: '', md: 'col-1', lg: 'col-1'})">My Keeps</a>
+      <a class="nav-text" @click="goMyKeeps" :class="$mq | mq({xs: '', sm: '', md: 'col-1', lg: 'col-1'})">My Keeps</a>
       <a class="nav-text" @click="logout" :class="$mq | mq({xs: '', sm: '', md: 'col-1', lg: 'col-1'})">Logout</a>
 
     </nav>
@@ -31,6 +31,9 @@
       },
       goVaults() {
         this.$router.push({ path: '/vaults' })
+      },
+      goMyKeeps() {
+        this.$router.push({ path: '/mykeeps' })
       }
     },
     components: {}

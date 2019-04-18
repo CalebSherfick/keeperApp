@@ -147,6 +147,14 @@ export default new Vuex.Store({
         })
     },
 
+    //GET MY KEEPS
+    getMyKeeps({ commit, dispatch }) {
+      api.get('keeps/mykeeps')
+        .then(res => {
+          commit('setKeeps', res.data)
+        })
+    },
+
     //DELETE KEEP
     deleteKeep({ commit, dispatch }, keepId) {
       api.delete('keeps/' + keepId)
@@ -154,6 +162,14 @@ export default new Vuex.Store({
           commit('removeKeep', keepId)
         })
     },
+
+    //EDIT KEEP
+    // increaseViewCount({ commit, dispatch }, keepId) {
+    //   api.put('keeps/' + keepId)
+    //     .then(res => {
+    //       commit('setKeeps', res.data)
+    //     })
+    // },
 
     //#endregion
 
