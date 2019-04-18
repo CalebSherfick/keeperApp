@@ -1,6 +1,6 @@
 <template>
   <div class="vaultsView container-fluid">
-    <h1>Keepr</h1>
+    <h1>My Vaults</h1>
     <section class="row vaults">
       <div class="col-12">
         <div class="row">
@@ -19,6 +19,12 @@ import Vault from "@/components/Vault.vue";
 export default {
   name: "vaultsView",
   props: [],
+  mounted() {
+    //blocks users not logged in
+    if (!this.$store.state.user.id) {
+      this.$router.push({ name: "login" });
+    }
+  },
   data() {
     return {};
   },
