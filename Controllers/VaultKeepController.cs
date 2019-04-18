@@ -52,12 +52,13 @@ namespace keepr.Controllers
       return Ok(newVaultKeep);
     }
 
-    //DELETE VAULTKEEP
-    [HttpDelete("{id}")]
+    //DELETE VAULTKEEP api/vaultkeeps/:vaultId/keeps/:keepId
+    [HttpDelete("{vaultId}/keeps/{keepId}")]
     [Authorize]
-    public ActionResult<string> Delete(int id)
+    public ActionResult<string> Delete(int vaultId, int keepId)
     {
-      bool successful = _vkr.Delete(id);
+      string userId = HttpContext.User.Identity.Name;
+      bool successful = _vkr.Delete(vaultId, keepId, userId);
       if (!successful) { return BadRequest("Unable to DELETE: Delete was not successful."); }
       return Ok();
     }

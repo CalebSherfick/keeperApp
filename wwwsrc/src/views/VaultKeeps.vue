@@ -5,7 +5,7 @@
     <section class="row vaults">
       <div class="col-12">
         <div class="row">
-          <keep v-for="keep in keeps" :keep="keep"></keep>
+          <vault-keep v-for="keep in keeps" :keep="keep"></vault-keep>
         </div>
       </div>
     </section>
@@ -20,7 +20,7 @@
 
 <script>
   import Vault from "@/components/Vault.vue"
-  import Keep from "@/components/Keep.vue"
+  import VaultKeep from "@/components/VaultKeep.vue"
 
   export default {
     name: "dashboard",
@@ -51,7 +51,7 @@
     },
     components: {
       Vault,
-      Keep
+      VaultKeep
     }
 
   };

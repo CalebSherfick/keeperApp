@@ -28,7 +28,6 @@
         this.$store.dispatch("deleteVault", vaultId);
       },
       vaultKeeps(id) {
-        debugger
         this.$router.push({
           path: "/vaults/" + id + "/keeps"
         })
