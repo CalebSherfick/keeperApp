@@ -64,7 +64,6 @@
       <div class="col-12">
         <div class="row">
           <keep v-for="keep in keeps" :keep="keep"></keep>
-          <!-- <vault v-for="vault in vaults" :vault="vault"></vault> -->
         </div>
       </div>
     </section>

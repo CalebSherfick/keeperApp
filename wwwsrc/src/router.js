@@ -25,7 +25,7 @@ export default new Router({
     },
     {
       path: '/vaults',
-      name: 'vaults',
+      name: 'vaultsView',
       component: Vaults
     },
     {

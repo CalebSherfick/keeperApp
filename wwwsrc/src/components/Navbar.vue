@@ -3,8 +3,8 @@
     <nav
       :class="$mq | mq({xs: 'navbar sticky-top keeprBG row', sm: 'navbar sticky-top keeprBG row', md: 'navbar sticky-top navbar-expand-lg keeprBG row', lg: 'navbar sticky-top navbar-expand-lg keeprBG row'})">
 
-      <a class="nav-text" @click="" :class="$mq | mq({xs: '', sm: '', md: 'col-1', lg: 'col-1'})">Keepr</a>
-      <a class="nav-text" @click=""
+      <a class="nav-text" @click="goDashboard" :class="$mq | mq({xs: '', sm: '', md: 'col-1', lg: 'col-1'})">Keepr</a>
+      <a class="nav-text" @click="goDashboard"
         :class="$mq | mq({xs: '', sm: '', md: 'col-1 offset-5', lg: 'col-1 offset-5'})">Dashboard</a>
       <a class="nav-text" @click="goVaults" :class="$mq | mq({xs: '', sm: '', md: 'col-1', lg: 'col-1'})">My Vaults</a>
       <a class="nav-text" @click="" :class="$mq | mq({xs: '', sm: '', md: 'col-1', lg: 'col-1'})">My Keeps</a>
@@ -26,8 +26,11 @@
       logout() {
         this.$store.dispatch("logout");
       },
+      goDashboard() {
+        this.$router.push({ path: '/' })
+      },
       goVaults() {
-        t5his.$router.push({ path: '/' })
+        this.$router.push({ path: '/vaults' })
       }
     },
     components: {}
