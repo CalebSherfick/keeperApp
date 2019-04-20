@@ -63,13 +63,11 @@
 <script>
   import Waterfall from 'vue-waterfall/lib/waterfall';
   import WaterfallSlot from 'vue-waterfall/lib/waterfall-slot';
-  import Keep from "@/components/Keep.vue"
   export default {
     name: "keep",
     props: ["keep"],
     data() {
       return {
-        showDetails: false,
         waterfallOrder: this.$store.state.keeps.map(keep => keep.id)
       };
     },
@@ -93,7 +91,6 @@
       }
     },
     components: {
-      Keep,
       Waterfall,
       WaterfallSlot
     }
