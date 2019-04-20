@@ -1,14 +1,14 @@
 <template>
   <waterfall :line-gap="350" align="center" :watch="this.keeps" style="max-height:100%" interval=100>
     <waterfall-slot v-for="(keep, index) in keeps" move-class="item-move" v-if="keep.width" :width="keep.width"
-      :height="keep.height" class="anim p-1" :order="keep.id" :key="keep.id">
+      :height="keep.height" class="p-1" :order="keep.id" :key="keep.id">
 
       <div class="whole-keep">
         <img data-toggle="modal" :index="keep.id" :data-target="'#keepModal' + keep.id" class="keepImg" :src="keep.img">
 
         <div class="overlay-top" data-toggle="modal" :index="keep.id" @click="addCount(keep, 'views')"
           :data-target="'#keepModal' + keep.id">
-          <p class="text">VIEW DETAILS</p>
+          <p class="view-details">VIEW DETAILS</p>
         </div>
 
         <div class="overlay-bottom" data-toggle="modal" :index="keep.id" @click="addCount(keep, 'views')"
@@ -123,19 +123,14 @@
     -webkit-transition: all .5s cubic-bezier(.55, 0, .1, 1) !important;
   }
 
-  #keepButtons:active {
+  /* #keepButtons:active {
     box-shadow: none;
     background-color: #007bff !important;
     transform: scale(1.01);
-  }
+  } */
 
   .bg-color {
     background-color: black;
-  }
-
-  .anim {
-    /* box-shadow: -5px 5px 5px 0px rgba(152, 84, 187, 1) !important; */
-    transition: .5s cubic-bezier(.55, 0, .1, 1);
   }
 
   .vue-waterfall {
@@ -157,24 +152,14 @@
     cursor: pointer;
   }
 
-  .text {
+  .view-details {
     color: white;
-    font-size: 15px;
     position: absolute;
+    text-align: center;
+    font-size: 15px;
+    transform: translate(-50%, -50%);
     top: 40%;
     left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-  }
-
-  .text2 {
-    color: white;
-    font-size: 15px;
-    position: absolute;
-    top: 60%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
   }
 
   .overlay-bottom {
@@ -182,7 +167,7 @@
     bottom: 0;
     left: 0;
     right: 0;
-    background-color: #9854bb;
+    background-color: #687c68;
     overflow: hidden;
     width: 100%;
     height: 0;
@@ -194,7 +179,7 @@
     top: 0;
     left: 0;
     right: 0;
-    background-color: rgba(128, 128, 128, 0.441);
+    background-color: rgba(51, 51, 51, 0.336);
     overflow: hidden;
     width: 100%;
     height: 0;
@@ -210,7 +195,6 @@
     height: 80%;
     cursor: pointer;
   }
-
 
   .vault-btn {
     border-radius: 0px;
