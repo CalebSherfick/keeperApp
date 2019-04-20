@@ -2,11 +2,18 @@
   <div class="myKeeps container-fluid">
     <h1>My Keeps</h1>
 
-    <section class="row vaults">
+    <!-- <section class="row vaults">
       <div class="col-12">
         <div class="row">
           <my-keep v-for="keep in keeps" :keep="keep"></my-keep>
         </div>
+      </div>
+    </section> -->
+
+
+    <section class="row vaults">
+      <div class="col-12">
+        <my-keep></my-keep>
       </div>
     </section>
 

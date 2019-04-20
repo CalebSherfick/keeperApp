@@ -22,6 +22,7 @@ let api = Axios.create({
 export default new Vuex.Store({
   state: {
     user: {},
+    activeVault: {},
     myVaults: [],
     keeps: []
   },
@@ -31,6 +32,9 @@ export default new Vuex.Store({
     },
     setMyVaults(state, vaults) {
       state.myVaults = vaults
+    },
+    setActiveVault(state, vault) {
+      state.activeVault = vault
     },
     addMyVaults(state, newVault) {
       state.myVaults.push(newVault)
@@ -120,6 +124,11 @@ export default new Vuex.Store({
         })
     },
 
+    //GET VAULTS
+    setActiveVault({ commit, dispatch }, vault) {
+      commit('setActiveVault', vault)
+    },
+
     //DELETE VAULT
     deleteVault({ commit, dispatch }, vaultId) {
       api.delete('vaults/' + vaultId)
@@ -163,6 +172,17 @@ export default new Vuex.Store({
     getMyKeeps({ commit, dispatch }) {
       api.get('keeps/mykeeps')
         .then(res => {
+          let toAdd = res.data.map(keep => {
+            var image = new Image();
+            image.src = keep.img;
+            image.onload = function () {
+              // @ts-ignore
+              keep.width = this.width
+              // @ts-ignore
+              keep.height = this.height;
+            }
+            return keep
+          })
           commit('setKeeps', res.data)
         })
     },
@@ -188,20 +208,31 @@ export default new Vuex.Store({
 
     //#region  --VAULTKEEPS--
 
-    //CREATE KEEP
+    //CREATE VAULTKEEP
     createVaultKeep({ commit, dispatch }, payload) {
       api.post('vaultkeeps', payload)
     },
 
-    //GET KEEPS
+    //GET VAULTKEEPS
     getVaultKeeps({ commit, dispatch }, vaultId) {
       api.get('vaultkeeps/' + vaultId + '/keeps')
         .then(res => {
+          let toAdd = res.data.map(keep => {
+            var image = new Image();
+            image.src = keep.img;
+            image.onload = function () {
+              // @ts-ignore
+              keep.width = this.width
+              // @ts-ignore
+              keep.height = this.height;
+            }
+            return keep
+          })
           commit('setKeeps', res.data)
         })
     },
 
-    //DELETE KEEP
+    //DELETE VAULTKEEP
     deleteVaultKeep({ commit, dispatch }, payload) {
       api.delete('vaultkeeps/' + payload.VaultId + '/keeps/' + payload.KeepId)
         .then(res => {

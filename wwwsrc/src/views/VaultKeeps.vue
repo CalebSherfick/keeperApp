@@ -1,12 +1,11 @@
 <template>
   <div class="dashboard container-fluid">
     <h1>Vault Keeps</h1>
+    <h2>{{vault.name}}</h2>
 
     <section class="row vaults">
       <div class="col-12">
-        <div class="row">
-          <vault-keep v-for="keep in keeps" :keep="keep"></vault-keep>
-        </div>
+        <vault-keep></vault-keep>
       </div>
     </section>
 
@@ -24,13 +23,12 @@
 
   export default {
     name: "dashboard",
+    props: [],
     mounted() {
       //blocks users not logged in
       if (!this.$store.state.user.id) {
         this.$router.push({ name: "login" });
       }
-      //Get vault where vaultid= params & userid=logged in
-
       //Get vaultkeeps
       this.$store.dispatch('getVaultKeeps', parseInt(this.$route.params.VaultId));
     },
@@ -39,8 +37,8 @@
       }
     },
     computed: {
-      vaults() {
-        return this.$store.state.myVaults
+      vault() {
+        return this.$store.state.activeVault
       },
       keeps() {
         return this.$store.state.keeps

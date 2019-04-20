@@ -64,16 +64,7 @@
 
     <section class="row vaults">
       <div class="col-12">
-        <!-- <div class="row"> -->
         <keep></keep>
-
-        <!-- <waterfall :line-gap="250" align="center" :watch="this.keeps" style="max-height:100%;">
-          <keep v-for="(keep, index) in keeps" :keep="keep"></keep>
-        </waterfall> -->
-
-
-
-        <!-- </div> -->
       </div>
     </section>
   </div>

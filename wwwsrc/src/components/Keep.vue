@@ -6,13 +6,11 @@
       <div class="whole-keep">
         <img data-toggle="modal" :index="keep.id" :data-target="'#keepModal' + keep.id" class="keepImg" :src="keep.img">
 
-        <div class="overlay-top" data-toggle="modal" :index="keep.id" @click="addCount(keep, 'views')"
-          :data-target="'#keepModal' + keep.id">
+        <div class="overlay-top" data-toggle="modal" :index="keep.id" :data-target="'#keepModal' + keep.id">
           <p class="view-details">VIEW DETAILS</p>
         </div>
 
-        <div class="overlay-bottom" data-toggle="modal" :index="keep.id" @click="addCount(keep, 'views')"
-          :data-target="'#keepModal' + keep.id">
+        <div class="overlay-bottom" data-toggle="modal" :index="keep.id" :data-target="'#keepModal' + keep.id">
           <div class="row">
             <div class="col-12 d-flex align-items-end h-100 justify-content-center">
               <p class="text-white" style="font-weight:750;"> {{keep.name}}</p>
@@ -92,9 +90,6 @@
           VaultId: vaultId,
           KeepId: keepId
         })
-      },
-      increaseViewCount(keepId) {
-        this.$store.dispatch("increaseViewCount", keepId)
       }
     },
     components: {
