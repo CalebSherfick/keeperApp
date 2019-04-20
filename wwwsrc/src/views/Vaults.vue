@@ -1,13 +1,23 @@
 <template>
   <div class="vaultsView container-fluid">
     <h1>My Vaults</h1>
-    <section class="row vaults">
+
+
+    <!-- <section class="row vaults">
       <div class="col-12">
         <div class="row">
           <vault v-for="vault in vaults" :vault="vault"></vault>
         </div>
       </div>
+    </section> -->
+
+
+    <section class="row vaults">
+      <div class="col-12">
+        <vault></vault>
+      </div>
     </section>
+
   </div>
 
   <!-- :class="$mq | mq({xs: '', sm: '', md: '', lg: ''})" -->
