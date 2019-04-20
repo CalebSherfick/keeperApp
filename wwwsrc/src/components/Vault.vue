@@ -6,6 +6,7 @@
       <div class="card-header">
         {{vault.name}}
       </div>
+      <img class="card-img-top" :src="vault.imgUrl" alt="Card image cap">
       <div class="card-body">
         <p class="card-text">{{vault.description}}</p>
       </div>

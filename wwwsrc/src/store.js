@@ -120,11 +120,22 @@ export default new Vuex.Store({
     getVaults({ commit, dispatch }) {
       api.get('vaults')
         .then(res => {
+          let toAdd = res.data.map(vault => {
+            var image = new Image();
+            image.src = vault.imgUrl;
+            image.onload = function () {
+              // @ts-ignore
+              vault.width = this.width
+              // @ts-ignore
+              vault.height = this.height;
+            }
+            return vault
+          })
           commit('setMyVaults', res.data)
         })
     },
 
-    //GET VAULTS
+    //SET ACTIVE VAULT
     setActiveVault({ commit, dispatch }, vault) {
       commit('setActiveVault', vault)
     },
