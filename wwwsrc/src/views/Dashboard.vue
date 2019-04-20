@@ -64,9 +64,16 @@
 
     <section class="row vaults">
       <div class="col-12">
-        <div class="row">
-          <keep v-for="keep in keeps" :keep="keep"></keep>
-        </div>
+        <!-- <div class="row"> -->
+        <keep></keep>
+
+        <!-- <waterfall :line-gap="250" align="center" :watch="this.keeps" style="max-height:100%;">
+          <keep v-for="(keep, index) in keeps" :keep="keep"></keep>
+        </waterfall> -->
+
+
+
+        <!-- </div> -->
       </div>
     </section>
   </div>
@@ -78,16 +85,18 @@
 </template>
 
 <script>
+  // import Waterfall from 'vue-waterfall/lib/waterfall';
   import Vault from "@/components/Vault.vue"
   import Keep from "@/components/Keep.vue"
 
   export default {
     name: "dashboard",
+    props: ["keep"],
     mounted() {
       //blocks users not logged in
-      // if (!this.$store.state.user.id) {
-      //   this.$router.push({ name: "login" });
-      // }
+      if (!this.$store.state.user.id) {
+        this.$router.push({ name: "login" });
+      }
       this.$store.dispatch('getVaults');
       this.$store.dispatch('getKeeps');
     },
@@ -121,7 +130,8 @@
     },
     components: {
       Vault,
-      Keep
+      Keep,
+      // Waterfall
     }
 
   };

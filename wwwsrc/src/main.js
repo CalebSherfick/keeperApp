@@ -6,6 +6,7 @@ import MQ from 'vue-mq'
 
 Vue.config.productionTip = false
 
+
 Vue.use(MQ, {
   breakpoints: {
     xs: 575.98,

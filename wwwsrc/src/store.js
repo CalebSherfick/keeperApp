@@ -144,6 +144,17 @@ export default new Vuex.Store({
     getKeeps({ commit, dispatch }) {
       api.get('keeps')
         .then(res => {
+          let toAdd = res.data.map(keep => {
+            var image = new Image();
+            image.src = keep.img;
+            image.onload = function () {
+              // @ts-ignore
+              keep.width = this.width
+              // @ts-ignore
+              keep.height = this.height;
+            }
+            return keep
+          })
           commit('setKeeps', res.data)
         })
     },
