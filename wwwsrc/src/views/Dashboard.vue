@@ -85,13 +85,11 @@
 </template>
 
 <script>
-  // import Waterfall from 'vue-waterfall/lib/waterfall';
   import Vault from "@/components/Vault.vue"
   import Keep from "@/components/Keep.vue"
 
   export default {
     name: "dashboard",
-    props: ["keep"],
     mounted() {
       //blocks users not logged in
       if (!this.$store.state.user.id) {
@@ -105,16 +103,12 @@
         newVault: {
         },
         newKeep: {
-
         }
       }
     },
     computed: {
       vaults() {
         return this.$store.state.myVaults
-      },
-      keeps() {
-        return this.$store.state.keeps
       }
     },
     methods: {
@@ -130,8 +124,7 @@
     },
     components: {
       Vault,
-      Keep,
-      // Waterfall
+      Keep
     }
 
   };

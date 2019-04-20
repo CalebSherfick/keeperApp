@@ -9,7 +9,7 @@
       <div class="card-body">
         <p class="card-text">{{vault.description}}</p>
       </div>
-      <button class="btn btn-danger px-4" @click="deleteVault(vault.id)">Delete</button>
+      <button class="btn btn-danger px-4 delete-btn" @click="deleteVault(vault.id)">Delete</button>
     </div>
   </div>
 
@@ -41,5 +41,9 @@
 <style>
   .clickable:hover {
     cursor: pointer;
+  }
+
+  .delete-btn {
+    border-radius: 0px;
   }
 </style>

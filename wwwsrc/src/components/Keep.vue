@@ -1,31 +1,32 @@
 <template>
-  <!-- <div :class="$mq | mq({xs: 'col-12', sm: 'col-12', md: '', lg: 'col-3'})"> -->
-  <!-- <waterfall-slot move-class="item-move1" v-if="keep.width" :width="keep.width" :height="keep.height" class="anim p-1"
-    :order="keep.id" :key="keep.id"> -->
-
-
-
-  <waterfall :line-gap="250" align="center" :watch="this.keeps" style="max-height:100%;">
-    <!-- each component is wrapped by a waterfall slot -->
-    <waterfall-slot v-for="(keep, index) in keeps" move-class="item-move1" v-if="keep.width" :width="keep.width"
+  <waterfall :line-gap="350" align="center" :watch="this.keeps" style="max-height:100%" interval=100>
+    <waterfall-slot v-for="(keep, index) in keeps" move-class="item-move" v-if="keep.width" :width="keep.width"
       :height="keep.height" class="anim p-1" :order="keep.id" :key="keep.id">
 
-      <img :src="keep.img" :class="$mq | mq({xs: 'w-100', sm: 'w-100', md: 'w-100', lg: 'w-100'})">
-      <!-- <p>{{keep.name}}</p>
-      <p>{{keep.description}}</p> -->
+      <div class="whole-keep">
+        <img data-toggle="modal" :index="keep.id" :data-target="'#keepModal' + keep.id" class="keepImg" :src="keep.img">
 
-      <!-- Button trigger modal -->
-      <!-- <button @click="increaseViewCount(keep.id)" type="button" class="btn btn-success" data-toggle="modal"
-        :data-target="'#keepModal' + keep.id">
-        View Keep
-      </button> -->
+        <div class="overlay-top" data-toggle="modal" :index="keep.id" @click="addCount(keep, 'views')"
+          :data-target="'#keepModal' + keep.id">
+          <p class="text">VIEW DETAILS</p>
+        </div>
+
+        <div class="overlay-bottom" data-toggle="modal" :index="keep.id" @click="addCount(keep, 'views')"
+          :data-target="'#keepModal' + keep.id">
+          <div class="row">
+            <div class="col-12 d-flex align-items-end h-100 justify-content-center">
+              <p class="text-white" style="font-weight:750;"> {{keep.name}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
 
       <!-- Modal -->
-      <!-- <div class="modal" :id="'keepModal' + keep.id" tabindex="-1" role="dialog" aria-labelledby="keepModalLabel"
+      <div class="modal" :id="'keepModal' + keep.id" tabindex="-1" role="dialog" aria-labelledby="keepModalLabel"
         aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
           <div class="modal-content">
-            <div class="modal-header">
+            <div class="modal-header text-center d-flex justify-content-center">
               <h5 class="modal-title" id="keepModalLabel">{{keep.name}}</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
@@ -34,31 +35,31 @@
             <div class="modal-body">
               <img class="card-img-top" :src="keep.img">
             </div>
-            <div class="modal-footer"> -->
-      <!-- DropUp Button -->
-      <!-- <div class="btn-group dropup">
-                <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown"
-                  aria-haspopup="true" aria-expanded="false">
-                  Add to Vault
-                </button>
-                <div class="dropdown-menu">
-                  <a class="dropdown-item" @click="createVaultKeep(vault.id, keep.id)"
-                    v-for="vault in vaults">{{vault.name}}</a>
-                </div>
-              </div> -->
+            <div class="modal-footer d-flex justify-content-center">
 
-      <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Add to Vault</button> -->
-      <!-- </div>
+              <p>{{keep.description}}</p>
+              <!-- DropUp Button -->
+
+
+            </div>
+
+            <div class="btn-group dropup">
+              <button type="button" class="btn btn-secondary dropdown-toggle vault-btn" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+                Add to Vault
+              </button>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" @click="createVaultKeep(vault.id, keep.id)"
+                  v-for="vault in vaults">{{vault.name}}</a>
+              </div>
+            </div>
+
           </div>
         </div>
-      </div> -->
+      </div>
 
     </waterfall-slot>
   </waterfall>
-
-  <!-- <button class="btn btn-danger px-4 mb-2" @click="deleteKeep(keep.id)">Delete</button> -->
-  <!-- </waterfall-slot> -->
-  <!-- </div> -->
 </template>
 
 <script>
@@ -70,6 +71,7 @@
     props: ["keep"],
     data() {
       return {
+        showDetails: false,
         waterfallOrder: this.$store.state.keeps.map(keep => keep.id)
       };
     },
@@ -104,7 +106,7 @@
 </script>
 
 <style scoped>
-  #keepButtons {
+  /* #keepButtons {
     transition: all 0.1s linear;
   }
 
@@ -113,18 +115,12 @@
     background-color: #60a7f4 !important;
     transform: scale(1.02);
     cursor: pointer;
-  }
-
-  .sizing {
-    max-width: 100%;
-  }
+  } */
 
   .item-move {
-    transition: all 2s cubic-bezier(.55, 0, .1, 1) !important;
-  }
-
-  .item-move1 {
-    transition: ease-in 2s all
+    /* transition: all 2s cubic-bezier(.55, 0, .1, 1) !important; */
+    transition: all .5s cubic-bezier(.55, 0, .1, 1) !important;
+    -webkit-transition: all .5s cubic-bezier(.55, 0, .1, 1) !important;
   }
 
   #keepButtons:active {
@@ -146,21 +142,18 @@
     overflow: visible !important
   }
 
-  .keepClass {
+  .whole-keep {
     position: relative;
     width: 100%;
   }
 
-  .keepImage {
+  .keepImg {
     display: block;
     width: 100%;
     height: auto;
   }
 
-  .keepImage:hover {
-    display: block;
-    width: 100%;
-    height: auto;
+  .keepImg:hover {
     cursor: pointer;
   }
 
@@ -184,7 +177,7 @@
     text-align: center;
   }
 
-  .overlay {
+  .overlay-bottom {
     position: absolute;
     bottom: 0;
     left: 0;
@@ -196,7 +189,7 @@
     transition: .5s ease;
   }
 
-  .overlay2 {
+  .overlay-top {
     position: absolute;
     top: 0;
     left: 0;
@@ -208,13 +201,18 @@
     transition: .5s ease;
   }
 
-  .keepClass:hover .overlay2 {
-    height: 65%;
+  .whole-keep:hover .overlay-bottom {
+    height: 20%;
     cursor: pointer;
   }
 
-  .keepClass:hover .overlay {
-    height: 35%;
+  .whole-keep:hover .overlay-top {
+    height: 80%;
     cursor: pointer;
+  }
+
+
+  .vault-btn {
+    border-radius: 0px;
   }
 </style>
