@@ -4,8 +4,8 @@
     <mq-layout mq="xs">
       <nav class="navbar m-0 keeprBG row justify-content-start">
         <div class="col-1 d-flex justify-content-center">
-          <radial-menu style="background-color: #f2f2f2" :itemSize="50" :size=50 :radius="90" :rotate=225
-            :angle-restriction="45">
+          <radial-menu style="background-color: #f2f2f2" :itemSize="50" :size=50 :radius="90" :rotate=180
+            :angle-restriction="90">
             <radial-menu-item v-for="(item, index) in items" :key="index" style="background-color: #f2f2f2"
               @click="() => handleClick(item)">
               <span>{{item}}</span>
