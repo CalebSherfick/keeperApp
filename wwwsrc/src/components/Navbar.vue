@@ -15,7 +15,6 @@
         <div class="offset-10 col-1 d-flex justify-content-center">
           <i class="fas fa-bars fa-3x" data-toggle="collapse" data-target="#nav-bar-collapse"></i>
         </div>
-
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="navbar-collapse" id="nav-bar-collapse">
           <ul class="nav navbar-nav">
@@ -28,11 +27,35 @@
               data-target="#nav-bar-collapse">Logout</a>
           </ul>
         </div>
+      </nav>
+    </mq-layout>
 
-
-
-
-
+    <mq-layout mq="sm">
+      <nav class="navbar m-0 keeprBG row justify-content-start">
+        <div class="col-1 d-flex justify-content-center">
+          <radial-menu style="background-color: #f2f2f2" :itemSize="50" :size=50 :radius="90" :rotate=225
+            :angle-restriction="45">
+            <radial-menu-item v-for="(item, index) in items" :key="index" style="background-color: #f2f2f2"
+              @click="() => handleClick(item)">
+              <span>{{item}}</span>
+            </radial-menu-item>
+          </radial-menu>
+        </div>
+        <div class="offset-10 col-1 d-flex justify-content-center">
+          <i class="fas fa-bars fa-3x" data-toggle="collapse" data-target="#nav-bar-collapse"></i>
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="navbar-collapse" id="nav-bar-collapse">
+          <ul class="nav navbar-nav">
+            <a class="nav-text-mobile col-12 mt-3" @click="clearKeeps(); goVaults()" data-toggle="collapse"
+              data-target="#nav-bar-collapse">My
+              Vaults</a>
+            <a class="nav-text-mobile col-12" @click="clearKeeps(); goMyKeeps()" data-toggle="collapse"
+              data-target="#nav-bar-collapse">My Keeps</a>
+            <a class="nav-text-mobile col-12" @click="logout" data-toggle="collapse"
+              data-target="#nav-bar-collapse">Logout</a>
+          </ul>
+        </div>
       </nav>
     </mq-layout>
 
@@ -147,7 +170,7 @@
     font-size: 14px;
     font-weight: 500;
     color: #f2f2f2;
-    width: 105px;
+    width: 115px;
     text-align: start;
   }
 

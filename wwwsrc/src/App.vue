@@ -16,7 +16,15 @@
 
 <style>
   #app {
-    font-family: "Avenir", Helvetica, Arial, sans-serif;
+    /* font-family: "Avenir", Helvetica, Arial, sans-serif; */
+
+    /* font-family: 'Montserrat', sans-serif; */
+    /* font-family: 'Nunito', sans-serif; */
+    /* font-family: 'Nanum Gothic', sans-serif; */
+    /* font-family: 'BenchNine', sans-serif; */
+    font-family: 'Montserrat Alternates', sans-serif;
+    /* font-family: 'Julius Sans One', sans-serif; */
+
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-align: center;

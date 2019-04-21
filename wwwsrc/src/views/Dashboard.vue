@@ -1,6 +1,6 @@
 <template>
   <div class="dashboard container-fluid">
-    <h1>Keepr</h1>
+    <h1>Discover Keeps</h1>
 
     <section class="row vaults">
       <div class="col-12">
