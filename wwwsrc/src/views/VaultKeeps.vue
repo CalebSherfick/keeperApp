@@ -14,21 +14,24 @@
       aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
+
           <div class="modal-header">
             <h5 class="modal-title" id="createVaultModalLabel">Enter Vault Data</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
+
           <div class="modal-body">
+
             <form @submit.prevent="createVault">
-              <input type="text" placeholder=" Name" v-model="newVault.name" required>
-              <input type="text" placeholder=" Description" v-model="newVault.description" class="ml-2" id="desc">
-              <button type="submit" class="btn btn-sm btn-outline-dark shadow ml-2">Create
+              <input type="text" placeholder=" Name" v-model="newVault.name" class="form-input" required>
+              <input type="text" placeholder=" Description" v-model="newVault.description" class="form-input mt-3"
+                id="desc" required>
+              <button type="submit" class="btn form-btn mt-3">Create
                 Vault</button>
             </form>
-          </div>
-          <div class="modal-footer">
+
           </div>
         </div>
       </div>
@@ -47,14 +50,15 @@
           </div>
           <div class="modal-body">
             <form @submit.prevent="createKeep">
-              <input type="text" placeholder=" Name" v-model="newKeep.name" required>
-              <input type="text" placeholder=" Description" v-model="newKeep.description" class="ml-2" id="desc">
-              <input type="text" placeholder=" Image Url" v-model="newKeep.img" class="ml-2" id="desc">
-              <button type="submit" class="btn btn-sm btn-outline-dark shadow ml-2">Create
+              <input type="text" placeholder=" Name" v-model="newKeep.name" class="form-input" required>
+              <input type="text" placeholder=" Description" v-model="newKeep.description" class="form-input mt-3"
+                id="desc" required>
+              <input type="text" placeholder=" Image Url" v-model="newKeep.img" class="form-input mt-3" id="desc"
+                required>
+              </br>
+              <button type="submit" class="btn form-btn mt-3">Create
                 Keep</button>
             </form>
-          </div>
-          <div class="modal-footer">
           </div>
         </div>
       </div>

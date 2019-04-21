@@ -19,10 +19,13 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="navbar-collapse" id="nav-bar-collapse">
           <ul class="nav navbar-nav">
-            <a class="nav-text-mobile col-12" @click="clearKeeps(); goVaults()">My
+            <a class="nav-text-mobile col-12 mt-3" @click="clearKeeps(); goVaults()" data-toggle="collapse"
+              data-target="#nav-bar-collapse">My
               Vaults</a>
-            <a class="nav-text-mobile col-12" @click="clearKeeps(); goMyKeeps()">My Keeps</a>
-            <a class="nav-text-mobile col-12" @click="logout">Logout</a>
+            <a class="nav-text-mobile col-12" @click="clearKeeps(); goMyKeeps()" data-toggle="collapse"
+              data-target="#nav-bar-collapse">My Keeps</a>
+            <a class="nav-text-mobile col-12" @click="logout" data-toggle="collapse"
+              data-target="#nav-bar-collapse">Logout</a>
           </ul>
         </div>
 
@@ -161,6 +164,12 @@
 
   .nav-text {
     color: #f2f2f2 !important;
+  }
+
+  .nav-text-mobile {
+    color: #f2f2f2 !important;
+    font-size: 1.5em;
+    border-top: 2px solid rgba(131, 131, 131, 0.144);
   }
 
   .far,
