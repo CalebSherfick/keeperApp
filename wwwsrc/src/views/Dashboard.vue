@@ -25,7 +25,7 @@
 
             <form @submit.prevent="createVault">
               <input type="text" placeholder=" Name" v-model="newVault.name" class="form-input" required>
-              <input type="text" placeholder=" Description" v-model="newVault.description" class="form-input ml-2"
+              <input type="text" placeholder=" Description" v-model="newVault.description" class="form-input mt-3"
                 id="desc" required>
               <button type="submit" class="btn form-btn mt-3">Create
                 Vault</button>
@@ -50,7 +50,7 @@
           <div class="modal-body">
             <form @submit.prevent="createKeep">
               <input type="text" placeholder=" Name" v-model="newKeep.name" class="form-input" required>
-              <input type="text" placeholder=" Description" v-model="newKeep.description" class="form-input ml-2"
+              <input type="text" placeholder=" Description" v-model="newKeep.description" class="form-input mt-3"
                 id="desc" required>
               <input type="text" placeholder=" Image Url" v-model="newKeep.img" class="form-input mt-3" id="desc"
                 required>
@@ -135,6 +135,7 @@
   }
 
   .form-input {
+    width: 100%;
     padding: 8px;
     font-size: 15px;
     border: 1px solid rgba(255, 255, 255, .38);
