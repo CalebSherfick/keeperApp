@@ -1,30 +1,65 @@
 <template>
   <div class="navComponent">
-    <nav
-      :class="$mq | mq({xs: 'navbar keeprBG row', sm: 'navbar keeprBG row', md: 'navbar navbar-expand-lg keeprBG row', lg: 'navbar navbar-expand-lg keeprBG row'})">
-
-      <a class="nav-text" @click="clearKeeps(); goDashboard()"
-        :class="$mq | mq({xs: '', sm: '', md: 'col-1 offset-2', lg: 'col-1 offset-2'})">Keepr</a>
-      <div class="col-2 d-flex justify-content-start">
-        <button type="button" class="btn create-btn" data-toggle="modal" data-target="#createVaultMod">
-          <i class="fas fa-plus"></i> New Vault
-        </button>
-
-        <button type="button" class="btn create-btn ml-1" data-toggle="modal" data-target="#createKeepMod">
-          <i class="fas fa-plus"></i> New Keep
-        </button>
-
-      </div>
 
 
-      <a class="nav-text" @click="clearKeeps(); goVaults()"
-        :class="$mq | mq({xs: '', sm: '', md: 'col-1', lg: 'offset-3 col-1'})">My
-        Vaults</a>
-      <a class="nav-text" @click="clearKeeps(); goMyKeeps()"
-        :class="$mq | mq({xs: '', sm: '', md: 'col-1', lg: 'col-1'})">My Keeps</a>
-      <a class="nav-text" @click="logout" :class="$mq | mq({xs: '', sm: '', md: 'col-1', lg: 'col-1'})">Logout</a>
-    </nav>
 
+    <mq-layout mq="md">
+      <nav
+        :class="$mq | mq({xs: 'navbar keeprBG row', sm: 'navbar keeprBG row', md: 'navbar navbar-expand-lg keeprBG row', lg: 'navbar navbar-expand-lg keeprBG row'})">
+
+        <a class="nav-text" @click="clearKeeps(); goDashboard()"
+          :class="$mq | mq({xs: 'col-12', sm: 'col-12', md: 'col-1 offset-2', lg: 'col-1 offset-2'})">Keepr</a>
+        <div
+          :class="$mq | mq({xs: 'col-12 d-flex justify-content-around', sm: 'col-12 d-flex justify-content-around', md: 'col-2 d-flex justify-content-start', lg: 'col-2 d-flex justify-content-start'})">
+          <button type="button" class="btn create-btn" data-toggle="modal" data-target="#createVaultMod">
+            <i class="fas fa-plus"></i> New Vault
+          </button>
+
+          <button type="button" class="btn create-btn ml-1" data-toggle="modal" data-target="#createKeepMod">
+            <i class="fas fa-plus"></i> New Keep
+          </button>
+
+        </div>
+
+
+        <a class="nav-text" @click="clearKeeps(); goVaults()"
+          :class="$mq | mq({xs: 'col-12', sm: 'col-12', md: 'col-1', lg: 'offset-3 col-1'})">My
+          Vaults</a>
+        <a class="nav-text" @click="clearKeeps(); goMyKeeps()"
+          :class="$mq | mq({xs: 'col-12', sm: 'col-12', md: 'col-1', lg: 'col-1'})">My Keeps</a>
+        <a class="nav-text" @click="logout"
+          :class="$mq | mq({xs: 'col-12', sm: 'col-12', md: 'col-1', lg: 'col-1'})">Logout</a>
+      </nav>
+    </mq-layout>
+
+    <mq-layout mq="lg">
+      <nav
+        :class="$mq | mq({xs: 'navbar keeprBG row', sm: 'navbar keeprBG row', md: 'navbar navbar-expand-lg keeprBG row', lg: 'navbar navbar-expand-lg keeprBG row'})">
+
+        <a class="nav-text" @click="clearKeeps(); goDashboard()"
+          :class="$mq | mq({xs: 'col-12', sm: 'col-12', md: 'col-1 offset-2', lg: 'col-1 offset-2'})">Keepr</a>
+        <div
+          :class="$mq | mq({xs: 'col-12 d-flex justify-content-around', sm: 'col-12 d-flex justify-content-around', md: 'col-2 d-flex justify-content-start', lg: 'col-2 d-flex justify-content-start'})">
+          <button type="button" class="btn create-btn" data-toggle="modal" data-target="#createVaultMod">
+            <i class="fas fa-plus"></i> New Vault
+          </button>
+
+          <button type="button" class="btn create-btn ml-1" data-toggle="modal" data-target="#createKeepMod">
+            <i class="fas fa-plus"></i> New Keep
+          </button>
+
+        </div>
+
+
+        <a class="nav-text" @click="clearKeeps(); goVaults()"
+          :class="$mq | mq({xs: 'col-12', sm: 'col-12', md: 'col-1', lg: 'offset-3 col-1'})">My
+          Vaults</a>
+        <a class="nav-text" @click="clearKeeps(); goMyKeeps()"
+          :class="$mq | mq({xs: 'col-12', sm: 'col-12', md: 'col-1', lg: 'col-1'})">My Keeps</a>
+        <a class="nav-text" @click="logout"
+          :class="$mq | mq({xs: 'col-12', sm: 'col-12', md: 'col-1', lg: 'col-1'})">Logout</a>
+      </nav>
+    </mq-layout>
 
 
   </div>
@@ -88,7 +123,6 @@
   nav {
     width: 100%;
     font-size: 15px;
-    height: 50px;
     position: relative;
     top: 0;
   }
