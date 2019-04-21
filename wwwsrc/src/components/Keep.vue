@@ -46,8 +46,8 @@
             </div>
 
             <div class="btn-group dropup">
-              <button type="button" class="btn btn-secondary dropdown-toggle vault-btn" data-toggle="dropdown"
-                aria-haspopup="true" aria-expanded="false">
+              <button type="button" class="btn dropdown-toggle vault-btn" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false">
                 Add to Vault
               </button>
               <div class="dropdown-menu">
@@ -210,5 +210,14 @@
 
   .vault-btn {
     border-radius: 0px;
+    background-color: #04C0E5;
+    display: inline-block;
+    padding: 5px 0 2px 12px;
+    line-height: 150%;
+    font-size: 15px;
+    font-weight: 500;
+    color: #f2f2f2;
+    width: 115px;
+    text-align: start;
   }
 </style>

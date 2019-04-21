@@ -129,6 +129,11 @@
     border-radius: 0px;
   }
 
+  /* .modal-footer {
+    background-color: #B6BECB;
+    border-radius: 0px;
+  } */
+
   .modal-title,
   .modal-body,
   .modal-footer {
