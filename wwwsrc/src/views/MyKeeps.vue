@@ -1,6 +1,6 @@
 <template>
   <div class="myKeeps container-fluid">
-    <h1>My Keeps</h1>
+    <h1 class="view-title">My Keeps</h1>
 
     <section class="row vaults">
       <div class="col-12">

@@ -1,6 +1,6 @@
 <template>
   <div class="dashboard container-fluid">
-    <h1>Discover Keeps</h1>
+    <h1 class="view-title">Discover Keeps</h1>
 
     <section class="row vaults">
       <div class="col-12">
@@ -114,6 +114,10 @@
 </script>
 
 <style>
+  .view-title {
+    color: #f2f2f2;
+  }
+
   .modal-header {
     background-color: #2c2f34;
     border-radius: 0px;
@@ -125,7 +129,9 @@
     border-radius: 0px;
   }
 
-  .modal-title {
+  .modal-title,
+  .modal-body,
+  .modal-footer {
     color: #f2f2f2;
   }
 

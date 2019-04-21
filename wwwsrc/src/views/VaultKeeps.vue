@@ -1,7 +1,6 @@
 <template>
   <div class="dashboard container-fluid">
-    <h1>Vault Keeps</h1>
-    <h2>{{vault.name}}</h2>
+    <h1 class="view-title">{{vault.name}} Keeps</h1>
 
     <section class="row vaults">
       <div class="col-12">

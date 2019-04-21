@@ -1,6 +1,6 @@
 <template>
   <div class="vaultsView container-fluid">
-    <h1>My Vaults</h1>
+    <h1 class="view-title">My Vaults</h1>
 
     <section class="row vaults">
       <div class="col-12">

@@ -147,7 +147,7 @@
     bottom: 0;
     left: 0;
     right: 0;
-    background-color: #687c68;
+    background-color: #04C0E5;
     overflow: hidden;
     width: 100%;
     height: 0;
@@ -181,7 +181,7 @@
     bottom: 0;
     left: 0;
     right: 0;
-    background-color: #687c68;
+    background-color: #04C0E5;
     overflow: hidden;
     width: 100%;
     height: 20%;

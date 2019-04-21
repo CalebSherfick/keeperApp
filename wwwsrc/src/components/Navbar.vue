@@ -23,8 +23,11 @@
               Vaults</a>
             <a class="nav-text-mobile col-12" @click="clearKeeps(); goMyKeeps()" data-toggle="collapse"
               data-target="#nav-bar-collapse">My Keeps</a>
-            <a class="nav-text-mobile col-12" @click="logout" data-toggle="collapse"
+
+            <a v-if="this.$store.state.user.id" class="nav-text-mobile col-12" @click="logout" data-toggle="collapse"
               data-target="#nav-bar-collapse">Logout</a>
+            <a v-else class="nav-text-mobile col-12" @click="goLogin" data-toggle="collapse"
+              data-target="#nav-bar-collapse">Login</a>
           </ul>
         </div>
       </nav>
@@ -52,8 +55,10 @@
               Vaults</a>
             <a class="nav-text-mobile col-12" @click="clearKeeps(); goMyKeeps()" data-toggle="collapse"
               data-target="#nav-bar-collapse">My Keeps</a>
-            <a class="nav-text-mobile col-12" @click="logout" data-toggle="collapse"
+            <a v-if="this.$store.state.user.id" class="nav-text-mobile col-12" @click="logout" data-toggle="collapse"
               data-target="#nav-bar-collapse">Logout</a>
+            <a v-else class="nav-text-mobile col-12" @click="goLogin" data-toggle="collapse"
+              data-target="#nav-bar-collapse">Login</a>
           </ul>
         </div>
       </nav>
@@ -73,13 +78,12 @@
             <i class="fas fa-plus"></i> New Keep
           </button>
         </div>
-        <a class="nav-text" @click="clearKeeps(); goVaults()"
-          :class="$mq | mq({xs: 'col-12', sm: 'col-12', md: 'col-1', lg: 'offset-3 col-1'})">My
+        <a class="nav-text offset-3 col-1" @click="clearKeeps(); goVaults()">My
           Vaults</a>
-        <a class="nav-text" @click="clearKeeps(); goMyKeeps()"
-          :class="$mq | mq({xs: 'col-12', sm: 'col-12', md: 'col-1', lg: 'col-1'})">My Keeps</a>
-        <a class="nav-text" @click="logout"
-          :class="$mq | mq({xs: 'col-12', sm: 'col-12', md: 'col-1', lg: 'col-1'})">Logout</a>
+        <a class="nav-text col-1" @click="clearKeeps(); goMyKeeps()">My Keeps</a>
+        <a v-if="this.$store.state.user.id" class="nav-text col-1" @click="logout">Logout</a>
+        <a v-else class="nav-text col-1" @click="goLogin" data-toggle="collapse"
+          data-target="#nav-bar-collapse">Login</a>
       </nav>
     </mq-layout>
 
@@ -98,13 +102,12 @@
             <i class="fas fa-plus"></i> New Keep
           </button>
         </div>
-        <a class="nav-text" @click="clearKeeps(); goVaults()"
-          :class="$mq | mq({xs: 'col-12', sm: 'col-12', md: 'col-1', lg: 'offset-3 col-1'})">My
+        <a class="nav-text offset-3 col-1" @click="clearKeeps(); goVaults()">My
           Vaults</a>
-        <a class="nav-text" @click="clearKeeps(); goMyKeeps()"
-          :class="$mq | mq({xs: 'col-12', sm: 'col-12', md: 'col-1', lg: 'col-1'})">My Keeps</a>
-        <a class="nav-text" @click="logout"
-          :class="$mq | mq({xs: 'col-12', sm: 'col-12', md: 'col-1', lg: 'col-1'})">Logout</a>
+        <a class="nav-text col-1" @click="clearKeeps(); goMyKeeps()">My Keeps</a>
+        <a v-if="this.$store.state.user.id" class="nav-text col-1" @click="logout">Logout</a>
+        <a v-else class="nav-text col-1" @click="goLogin" data-toggle="collapse"
+          data-target="#nav-bar-collapse">Login</a>
       </nav>
     </mq-layout>
   </div>
@@ -125,6 +128,9 @@
       logout() {
         this.$store.dispatch("logout");
         this.$store.dispatch("setActiveVault", {})
+      },
+      goLogin() {
+        this.$router.push({ path: '/login' })
       },
       clearKeeps() {
         this.$store.dispatch("clearKeeps", [])
@@ -206,14 +212,14 @@
 
   .create-btn:hover {
     box-shadow: 1px 1px 2px black;
-    background-color: #60a7f4 !important;
+    background-color: rgb(0, 213, 255) !important;
     transform: scale(1.02);
     cursor: pointer;
   }
 
   .create-btn:active {
     box-shadow: none;
-    background-color: #007bff !important;
+    background-color: rgb(0, 179, 214) !important;
     transform: scale(1.01);
   }
 </style>

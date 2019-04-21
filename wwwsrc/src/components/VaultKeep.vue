@@ -140,7 +140,7 @@
     bottom: 0;
     left: 0;
     right: 0;
-    background-color: #687c68;
+    background-color: #04C0E5;
     overflow: hidden;
     width: 100%;
     height: 0;
@@ -174,7 +174,7 @@
     bottom: 0;
     left: 0;
     right: 0;
-    background-color: #687c68;
+    background-color: #04C0E5;
     overflow: hidden;
     width: 100%;
     height: 20%;
@@ -202,7 +202,8 @@
   }
 
   .delete-btn {
-    background-color: rgb(202, 134, 134);
+    background-color: #E63946;
+    color: #f2f2f2;
     border-radius: 0px;
   }
 </style>
