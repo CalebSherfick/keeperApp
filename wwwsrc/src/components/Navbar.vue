@@ -140,7 +140,7 @@
   }
 
   .create-btn {
-    background-color: #1bb76e;
+    background-color: #04C0E5;
     display: inline-block;
     padding: 5px 0 2px 12px;
     line-height: 150%;
@@ -176,10 +176,6 @@
   .fas {
     color: #f2f2f2;
   }
-
-
-
-
 
   .create-btn {
     transition: all 0.1s linear;

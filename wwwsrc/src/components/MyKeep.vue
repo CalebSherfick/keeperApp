@@ -4,10 +4,14 @@
       :height="keep.height" class="p-1" :order="keep.id" :key="keep.id">
       <div class="whole-keep">
         <img data-toggle="modal" :index="keep.id" :data-target="'#keepModal' + keep.id" class="keepImg" :src="keep.img">
-        <div class="overlay-top" data-toggle="modal" :index="keep.id" :data-target="'#keepModal' + keep.id">
+        <div
+          :class="$mq | mq({xs: 'overlay-mobile-top', sm: 'overlay-mobile-top', md: 'overlay-top', lg: 'overlay-top'})"
+          data-toggle="modal" :index="keep.id" :data-target="'#keepModal' + keep.id">
           <p class="view-details">VIEW DETAILS</p>
         </div>
-        <div class="overlay-bottom" data-toggle="modal" :index="keep.id" :data-target="'#keepModal' + keep.id">
+        <div
+          :class="$mq | mq({xs: 'overlay-mobile-bottom', sm: 'overlay-mobile-bottom', md: 'overlay-bottom', lg: 'overlay-bottom'})"
+          data-toggle="modal" :index="keep.id" :data-target="'#keepModal' + keep.id">
           <div class="row">
             <div class="col-12 d-flex align-items-end h-100 justify-content-center">
               <p class="text-white" style="font-weight:750;"> {{keep.name}}</p>
@@ -161,6 +165,38 @@
 
   .whole-keep:hover .overlay-top {
     height: 80%;
+    cursor: pointer;
+  }
+
+  .overlay-mobile-bottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #687c68;
+    overflow: hidden;
+    width: 100%;
+    height: 20%;
+    transition: .5s ease;
+  }
+
+  .overlay-mobile-top {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(51, 51, 51, 0.336);
+    overflow: hidden;
+    width: 100%;
+    height: 80%;
+    transition: .5s ease;
+  }
+
+  .whole-vault:hover .overlay-mobile-bottom {
+    cursor: pointer;
+  }
+
+  .whole-vault:hover .overlay-mobile-top {
     cursor: pointer;
   }
 

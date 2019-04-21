@@ -116,10 +116,13 @@
 <style>
   .modal-header {
     background-color: #2c2f34;
+    border-radius: 0px;
   }
 
-  .modal-body {
+  .modal-body,
+  .modal-footer {
     background-color: #45484f;
+    border-radius: 0px;
   }
 
   .modal-title {
@@ -154,7 +157,7 @@
     padding: 4px 15px;
     margin: 0 5px;
     border-radius: 5px;
-    background-image: linear-gradient(to bottom, #e0e0e0, #b7b7b7);
+    background-image: linear-gradient(to bottom, #e0e0e0, #B6BECB);
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .5);
   }
 
