@@ -179,6 +179,11 @@ export default new Vuex.Store({
         })
     },
 
+    //SET KEEPS
+    clearKeeps({ commit, dispatch }, emptyArr) {
+      commit('setKeeps', emptyArr)
+    },
+
     //GET MY KEEPS
     getMyKeeps({ commit, dispatch }) {
       api.get('keeps/mykeeps')

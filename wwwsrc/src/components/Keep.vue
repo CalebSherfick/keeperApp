@@ -98,28 +98,12 @@
 </script>
 
 <style scoped>
-  /* #keepButtons {
-    transition: all 0.1s linear;
-  }
-
-  #keepButtons:hover {
-    box-shadow: 1px 1px 2px black;
-    background-color: #60a7f4 !important;
-    transform: scale(1.02);
-    cursor: pointer;
-  } */
-
   .item-move {
     /* transition: all 2s cubic-bezier(.55, 0, .1, 1) !important; */
     transition: all .5s cubic-bezier(.55, 0, .1, 1) !important;
     -webkit-transition: all .5s cubic-bezier(.55, 0, .1, 1) !important;
   }
 
-  /* #keepButtons:active {
-    box-shadow: none;
-    background-color: #007bff !important;
-    transform: scale(1.01);
-  } */
 
   .bg-color {
     background-color: black;

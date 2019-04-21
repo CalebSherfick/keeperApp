@@ -2,35 +2,35 @@
   <div class="dashboard container-fluid">
     <h1>Keepr</h1>
 
-
-    <!-- Button trigger modal -->
-    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#createVaultMod">
-      Create Vault
-    </button>
-    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#createKeepMod">
-      Create Keep
-    </button>
+    <section class="row vaults">
+      <div class="col-12">
+        <keep></keep>
+      </div>
+    </section>
 
     <!-- Create VAULT Modal -->
     <div class="modal" id="createVaultMod" tabindex="-1" role="dialog" aria-labelledby="createVaultModalLabel"
       aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
+
           <div class="modal-header">
             <h5 class="modal-title" id="createVaultModalLabel">Enter Vault Data</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
+
           <div class="modal-body">
+
             <form @submit.prevent="createVault">
-              <input type="text" placeholder=" Name" v-model="newVault.name" required>
-              <input type="text" placeholder=" Description" v-model="newVault.description" class="ml-2" id="desc">
-              <button type="submit" class="btn btn-sm btn-outline-dark shadow ml-2">Create
+              <input type="text" placeholder=" Name" v-model="newVault.name" class="form-input" required>
+              <input type="text" placeholder=" Description" v-model="newVault.description" class="form-input ml-2"
+                id="desc" required>
+              <button type="submit" class="btn form-btn mt-3">Create
                 Vault</button>
             </form>
-          </div>
-          <div class="modal-footer">
+
           </div>
         </div>
       </div>
@@ -49,30 +49,22 @@
           </div>
           <div class="modal-body">
             <form @submit.prevent="createKeep">
-              <input type="text" placeholder=" Name" v-model="newKeep.name" required>
-              <input type="text" placeholder=" Description" v-model="newKeep.description" class="ml-2" id="desc">
-              <input type="text" placeholder=" Image Url" v-model="newKeep.img" class="ml-2" id="desc">
-              <button type="submit" class="btn btn-sm btn-outline-dark shadow ml-2">Create
+              <input type="text" placeholder=" Name" v-model="newKeep.name" class="form-input" required>
+              <input type="text" placeholder=" Description" v-model="newKeep.description" class="form-input ml-2"
+                id="desc" required>
+              <input type="text" placeholder=" Image Url" v-model="newKeep.img" class="form-input mt-3" id="desc"
+                required>
+              </br>
+              <button type="submit" class="btn form-btn mt-3">Create
                 Keep</button>
             </form>
-          </div>
-          <div class="modal-footer">
           </div>
         </div>
       </div>
     </div>
 
-    <section class="row vaults">
-      <div class="col-12">
-        <keep></keep>
-      </div>
-    </section>
   </div>
-
-
   <!-- :class="$mq | mq({xs: '', sm: '', md: '', lg: ''})" -->
-
-
 </template>
 
 <script>
@@ -83,9 +75,9 @@
     name: "dashboard",
     mounted() {
       //blocks users not logged in
-      if (!this.$store.state.user.id) {
-        this.$router.push({ name: "login" });
-      }
+      // if (!this.$store.state.user.id) {
+      //   this.$router.push({ name: "login" });
+      // }
       this.$store.dispatch('getVaults');
       this.$store.dispatch('getKeeps');
     },
@@ -120,3 +112,58 @@
 
   };
 </script>
+
+<style>
+  .modal-header {
+    background-color: #2c2f34;
+  }
+
+  .modal-body {
+    background-color: #45484f;
+  }
+
+  .modal-title {
+    color: #f2f2f2;
+  }
+
+  .close {
+    color: #f2f2f2;
+  }
+
+  .close:hover {
+    color: white;
+  }
+
+  .form-input {
+    padding: 8px;
+    font-size: 15px;
+    border: 1px solid rgba(255, 255, 255, .38);
+    border-radius: 5px;
+    box-sizing: border-box;
+    background-color: #45484f;
+    box-shadow: inset 0 2px 6px 0 rgba(0, 0, 0, .26);
+    color: #696969;
+    text-align: center;
+    outline: 0;
+  }
+
+  .form-btn {
+    display: inline-block;
+    color: #333;
+    padding: 4px 15px;
+    margin: 0 5px;
+    border-radius: 5px;
+    background-image: linear-gradient(to bottom, #e0e0e0, #b7b7b7);
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .5);
+  }
+
+  .form-btn:hover {
+    transform: scale(1.02);
+    cursor: pointer;
+  }
+
+  .form-btn:active {
+    box-shadow: none;
+    transform: scale(1.01);
+  }
+</style>
