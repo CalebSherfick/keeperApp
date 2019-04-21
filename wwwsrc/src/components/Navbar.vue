@@ -70,7 +70,7 @@
         <a class="nav-text" @click="clearKeeps(); goDashboard()"
           :class="$mq | mq({xs: 'col-12', sm: 'col-12', md: 'col-1 offset-2', lg: 'col-1 offset-2'})">Keepr</a>
         <div
-          :class="$mq | mq({xs: 'col-12 d-flex justify-content-around', sm: 'col-12 d-flex justify-content-around', md: 'col-2 d-flex justify-content-start', lg: 'col-2 d-flex justify-content-start'})">
+          :class="$mq | mq({xs: 'col-12 d-flex justify-content-around', sm: 'col-12 d-flex justify-content-around', md: 'col-3 d-flex justify-content-start', lg: 'col-3 d-flex justify-content-start'})">
           <button type="button" class="btn create-btn" data-toggle="modal" data-target="#createVaultMod">
             <i class="fas fa-plus"></i> New Vault
           </button>
@@ -78,7 +78,7 @@
             <i class="fas fa-plus"></i> New Keep
           </button>
         </div>
-        <a class="nav-text offset-3 col-1" @click="clearKeeps(); goVaults()">My
+        <a class="nav-text offset-2 col-1" @click="clearKeeps(); goVaults()">My
           Vaults</a>
         <a class="nav-text col-1" @click="clearKeeps(); goMyKeeps()">My Keeps</a>
         <a v-if="this.$store.state.user.id" class="nav-text col-1" @click="logout">Logout</a>
@@ -93,7 +93,7 @@
         <a class="nav-text" @click="clearKeeps(); goDashboard()"
           :class="$mq | mq({xs: 'col-12', sm: 'col-12', md: 'col-1 offset-2', lg: 'col-1 offset-2'})">Keepr</a>
         <div
-          :class="$mq | mq({xs: 'col-12 d-flex justify-content-around', sm: 'col-12 d-flex justify-content-around', md: 'col-2 d-flex justify-content-start', lg: 'col-2 d-flex justify-content-start'})">
+          :class="$mq | mq({xs: 'col-12 d-flex justify-content-around', sm: 'col-12 d-flex justify-content-around', md: 'col-3 d-flex justify-content-start', lg: 'col-3 d-flex justify-content-start'})">
           <button type="button" class="btn create-btn" data-toggle="modal" data-target="#createVaultMod">
             <i class="fas fa-plus"></i> New Vault
           </button>
@@ -102,7 +102,7 @@
             <i class="fas fa-plus"></i> New Keep
           </button>
         </div>
-        <a class="nav-text offset-3 col-1" @click="clearKeeps(); goVaults()">My
+        <a class="nav-text offset-2 col-1" @click="clearKeeps(); goVaults()">My
           Vaults</a>
         <a class="nav-text col-1" @click="clearKeeps(); goMyKeeps()">My Keeps</a>
         <a v-if="this.$store.state.user.id" class="nav-text col-1" @click="logout">Logout</a>
