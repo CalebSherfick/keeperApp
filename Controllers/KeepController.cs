@@ -70,7 +70,7 @@ namespace keepr.Controllers
     // Keep newKeep = _kr.AddView(id)
     //     }
 
-    //DELETE
+    //DELETE api/keeps/{keep_id}
     [HttpDelete("{id}")]
     public ActionResult<string> Delete(int id)
     {
